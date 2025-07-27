@@ -1,0 +1,39 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+Thumbs.db
+
+# App specific
+apps/*/node_modules/
+apps/*/dist/
+apps/*/build/
+apps/*/.env
+apps/*/.env.local
+
+# Package specific
+packages/*/node_modules/
+packages/*/dist/
+packages/*/build/
+
+# Mobile specific
+apps/mobile/platforms/
+apps/mobile/hooks/
+apps/mobile/*.d.ts
+nsconfig.json
+
+# IDE
+*.swp
+*.swo
+
+# Temporary files
+scratch.ts
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
