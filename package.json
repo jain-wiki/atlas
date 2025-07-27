@@ -1,0 +1,32 @@
+{
+  "name": "atlas",
+  "version": "1.0.0",
+  "description": "Jain Atlas Monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run --filter '*' dev",
+    "dev:backend": "cd apps/backend && bun run dev",
+    "dev:web": "cd apps/web && bun run dev",
+    "build:backend": "cd apps/backend && bun run build",
+    "build:web": "cd apps/web && bun run build",
+    "install:all": "bun install && cd apps/backend && bun install && cd ../web && bun install"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest"
+  },
+  "catalog": {
+    "better-auth": "1.2.9",
+    "dayjs": "1.11.13",
+    "libphonenumber-js": "1.12.10",
+    "nanoid": "5.1.5",
+    "zod": "4.0.5"
+  },
+  "engines": {
+    "bun": ">=1.2.19"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "@jamku/types",
+  "version": "1.0.0",
+  "description": "Shared TypeScript types for Jamku Attendance",
+  "main": "src/index.js",
+  "devDependencies": {
+    "typescript": "latest"
+  }
+}
