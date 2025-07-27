@@ -28,5 +28,9 @@
   },
   "engines": {
     "bun": ">=1.2.19"
+  },
+  "dependencies": {
+    "nanoid": "^5.1.5",
+    "zod": "^4.0.10"
   }
 }

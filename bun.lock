@@ -3,6 +3,10 @@
   "workspaces": {
     "": {
       "name": "atlas",
+      "dependencies": {
+        "nanoid": "^5.1.5",
+        "zod": "^4.0.10",
+      },
       "devDependencies": {
         "@types/bun": "latest",
         "typescript": "latest",
@@ -16,6 +20,8 @@
         "better-sqlite3": "^12.2.0",
         "hono": "^4.8.9",
         "knex": "^3.1.0",
+        "nanoid": "^5.1.5",
+        "zod": "^4.0.10",
       },
       "devDependencies": {
         "@atlas/types": "workspace:*",
@@ -187,6 +193,8 @@
     "mkdirp-classic": ["mkdirp-classic@0.5.3", "", {}, "sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A=="],
 
     "ms": ["ms@2.1.2", "", {}, "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="],
+
+    "nanoid": ["nanoid@5.1.5", "", { "bin": { "nanoid": "bin/nanoid.js" } }, "sha512-Ir/+ZpE9fDsNH0hQ3C68uyThDXzYcim2EqcZ8zn8Chtt1iylPT9xXJB0kPCnqzgcEGikO9RxSrh63MsmVCU7Fw=="],
 
     "nanostores": ["nanostores@0.11.4", "", {}, "sha512-k1oiVNN4hDK8NcNERSZLQiMfRzEGtfnvZvdBvey3SQbgn8Dcrk0h1I6vpxApjb10PFUflZrgJ2WEZyJQ+5v7YQ=="],
 

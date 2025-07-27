@@ -2,20 +2,23 @@
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { auth } from "./lib/auth";
+import { errorHandler } from "./routes/middleware/errorhandler";
+import { securityHeaders, corsHeaders } from "./routes/middleware/security";
+import { apiRoutes } from "./routes/route";
 
 const app = new Hono();
+
+// Add security middleware
+app.use('*', securityHeaders);
+app.use('*', corsHeaders);
 
 // Mount Better Auth handler at /api/auth/*
 app.on(["GET", "POST"], "/api/auth/*", (c) => auth.handler(c.req.raw));
 
-// Placeholder for API routes (to be implemented and imported)
-// import { apiRoutes } from "./routes/route";
-// app.route("/api", apiRoutes);
+// Mount API routes
+app.route("/api", apiRoutes);
 
 // Error handling middleware
-app.onError((err, c) => {
-  console.error("Unhandled error:", err);
-  return c.json({ error: "Internal Server Error" }, 500);
-});
+app.onError(errorHandler);
 
 serve(app);

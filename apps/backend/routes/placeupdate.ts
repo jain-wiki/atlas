@@ -1,17 +1,8 @@
 import { Hono } from "hono";
 import db from "../lib/db";
+import { createSuccessResponse, createErrorResponse, ErrorMessages } from './middleware/responses';
 
 export const placeUpdateRoutes = new Hono();
-
-// GET /api/place/:id - View One Place
-placeUpdateRoutes.get(":id", async (c) => {
-  const { id } = c.req.param();
-  const place = await db("places").where({ id }).first();
-  if (!place) {
-    return c.json({ error: "Place not found" }, 404);
-  }
-  return c.json({ data: place });
-});
 
 // GET /api/place/list - List Places with filters and pagination
 placeUpdateRoutes.get("/list", async (c) => {
@@ -35,7 +26,7 @@ placeUpdateRoutes.get("/list", async (c) => {
   }
 
   const results = await query.limit(Number(limit)).offset(Number(offset));
-  return c.json({ data: results });
+  return c.json(createSuccessResponse(results));
 });
 
 // GET /api/place/:id - View One Place
@@ -43,7 +34,7 @@ placeUpdateRoutes.get(":id", async (c) => {
   const { id } = c.req.param();
   const place = await db("places").where({ id }).first();
   if (!place) {
-    return c.json({ error: "Place not found" }, 404);
+    return c.json(createErrorResponse(ErrorMessages.PLACE_NOT_FOUND), 404);
   }
-  return c.json({ data: place });
+  return c.json(createSuccessResponse(place));
 });
