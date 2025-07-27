@@ -1,7 +1,7 @@
 {
-  "name": "@jamku/types",
+  "name": "@atlas/types",
   "version": "1.0.0",
-  "description": "Shared TypeScript types for Jamku Attendance",
+  "description": "Shared TypeScript types for Atlas",
   "main": "src/index.js",
   "devDependencies": {
     "typescript": "latest"

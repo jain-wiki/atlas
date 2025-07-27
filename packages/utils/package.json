@@ -1,7 +1,7 @@
 {
-  "name": "@jamku/utils",
+  "name": "@atlas/utils",
   "version": "1.0.0",
-  "description": "Shared utility functions for Jamku Attendance",
+  "description": "Shared utility functions for Atlas",
   "main": "src/index.ts",
   "dependencies": {
     "libphonenumber-js": "catalog:"
