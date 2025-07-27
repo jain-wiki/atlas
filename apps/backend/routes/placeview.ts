@@ -1,102 +1,41 @@
-import { Hono } from 'hono'
-import { nanoid } from 'nanoid'
-import { z } from 'zod'
-import db from '../lib/db'
-import { requireAuth } from './middleware/auth'
-import { logPlaceAction } from '../helper/placelog'
-import { createSuccessResponse, createErrorResponse, ErrorMessages } from './middleware/responses'
+import { Hono } from 'hono';
+import db from '../lib/db';
+import { createSuccessResponse, createErrorResponse, ErrorMessages } from './middleware/responses';
 
-export const placeViewRoutes = new Hono()
+export const placeViewRoutes = new Hono();
 
-// Zod schema for place creation
-const placeSchema = z.object({
-  name: z.string().min(1).max(100),
-  additional_names: z.string().max(500).optional(),
-  type_of_place: z.string().length(1),
-  description: z.string().max(1000).optional(),
-})
+// GET /api/place/list - List Places with filters and pagination
+placeViewRoutes.get('/list', async (c) => {
+  const { name, type, id, limit = 20, offset = 0 } = c.req.query();
+  let query = db('places');
 
-// PUT /api/p/place/:id - Edit Place (Protected)
-placeViewRoutes.put('/place/:id', requireAuth, async (c) => {
-  const { id } = c.req.param()
-  const body = await c.req.json()
-  const parse = placeSchema.safeParse(body)
-  if (!parse.success) {
-    return c.json(createErrorResponse(ErrorMessages.VALIDATION_FAILED, parse.error.issues), 400)
+  if (name) {
+    query = query.where(function () {
+      this.where('name', 'like', `%${name}%`).orWhere(
+        'additional_names',
+        'like',
+        `%${name}%`
+      );
+    });
   }
-  const data = parse.data
-  const user = (c as any).get('user') as { email?: string }
-
-  if (!user.email) {
-    return c.json(createErrorResponse(ErrorMessages.USER_EMAIL_MISSING), 400)
+  if (type) {
+    query = query.where('type_of_place', type);
+  }
+  if (id) {
+    query = query.where('id', 'like', `${id}%`);
   }
 
-  const oldPlace = await db('places').where({ id }).first()
-  if (!oldPlace) {
-    return c.json(createErrorResponse(ErrorMessages.PLACE_NOT_FOUND), 404)
+  const results = await query.limit(Number(limit)).offset(Number(offset));
+  return c.json(createSuccessResponse(results));
+});
+
+
+// GET /api/place/:id - View One Place
+placeViewRoutes.get(':id', async (c) => {
+  const { id } = c.req.param();
+  const place = await db('places').where({ id }).first();
+  if (!place) {
+    return c.json(createErrorResponse(ErrorMessages.PLACE_NOT_FOUND), 404);
   }
-  const updatedPlace = {
-    name: data.name,
-    additional_names: data.additional_names || null,
-    type_of_place: data.type_of_place,
-    description: data.description || null,
-    updated_at: db.fn.now(),
-  }
-  await db('places').where({ id }).update(updatedPlace)
-  // @ts-ignore - user.email is guaranteed to exist due to check above
-  await logPlaceAction(id, 'U', oldPlace, updatedPlace, user.email)
-  return c.json(createSuccessResponse({ id }))
-})
-
-// POST /api/p/place - Add Place (Protected)
-placeViewRoutes.post('/place', requireAuth, async (c) => {
-  const body = await c.req.json()
-  const parse = placeSchema.safeParse(body)
-  if (!parse.success) {
-    return c.json(createErrorResponse(ErrorMessages.VALIDATION_FAILED, parse.error.issues), 400)
-  }
-  const data = parse.data
-  const id = nanoid(10)
-  const user = (c as any).get('user') as { email?: string }
-
-  if (!user.email) {
-    return c.json(createErrorResponse(ErrorMessages.USER_EMAIL_MISSING), 400)
-  }
-
-  const newPlace = {
-    id,
-    name: data.name,
-    additional_names: data.additional_names || null,
-    type_of_place: data.type_of_place,
-    description: data.description || null,
-  }
-  await db('places').insert(newPlace)
-  // @ts-ignore - user.email is guaranteed to exist due to check above
-  await logPlaceAction(id, 'I', null, newPlace, user.email)
-  return c.json(createSuccessResponse({ id }), 201)
-})
-
-// DELETE /api/p/place/:id - Delete Place (Protected)
-placeViewRoutes.delete('/place/:id', requireAuth, async (c) => {
-  const { id } = c.req.param()
-  const user = (c as any).get('user') as { email?: string }
-
-  if (!user.email) {
-    return c.json(createErrorResponse(ErrorMessages.USER_EMAIL_MISSING), 400)
-  }
-
-  // Check if place exists before deleting
-  const existingPlace = await db('places').where({ id }).first()
-  if (!existingPlace) {
-    return c.json(createErrorResponse(ErrorMessages.PLACE_NOT_FOUND), 404)
-  }
-
-  // Delete the place
-  await db('places').where({ id }).del()
-
-  // Log deletion in places_log table (user.email is guaranteed to exist due to check above)
-  // @ts-ignore - user.email is guaranteed to exist due to check above
-  await logPlaceAction(id, 'D', existingPlace, null, user.email)
-
-  return c.json(createSuccessResponse({ id, deleted: true }))
-})
+  return c.json(createSuccessResponse(place));
+});
