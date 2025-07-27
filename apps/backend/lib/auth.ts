@@ -1,10 +1,12 @@
 import { betterAuth } from 'better-auth';
 import { oneTap } from 'better-auth/plugins';
-import Database from 'better-sqlite3';
+// @ts-ignore
+import sqlDb from '../db.sqlite' with { "type": "sqlite" };
+
 
 export const auth = betterAuth({
   appName: 'Jain Atlas',
-  database: new Database('./db.sqlite'),
+  database: sqlDb,
   account: {
     accountLinking: {
       enabled: true,
