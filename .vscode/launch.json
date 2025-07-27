@@ -1,0 +1,19 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  //   For MAC make the runtimeExecutable point to the node path in your machine
+  //   "runtimeExecutable": "/Users/yogesh/.nvm/versions/node/v22.1.0/bin/node",
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "ThisFile",
+      "program": "${file}",
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
+    },
+  ]
+}

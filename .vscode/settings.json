@@ -1,0 +1,11 @@
+{
+  "editor.tabSize": 2,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "editor.linkedEditing": true,
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "npm.packageManager": "bun",
+}
