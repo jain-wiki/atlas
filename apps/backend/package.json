@@ -1,0 +1,17 @@
+{
+  "name": "@atlas/backend",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch index.ts"
+  },
+  "private": true,
+  "devDependencies": {
+    "@atlas/types": "workspace:*",
+    "@atlas/utils": "workspace:*",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "latest"
+  }
+}
