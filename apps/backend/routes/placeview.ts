@@ -1,31 +1,38 @@
 import { Hono } from 'hono';
-import db from '../lib/db';
 import { createSuccessResponse, createErrorResponse, ErrorMessages } from './middleware/responses';
+
+// @ts-ignore
+import sqlDb from '../db.sqlite' with { "type": "sqlite" };
 
 export const placeViewRoutes = new Hono();
 
 // GET /api/place/list - List Places with filters and pagination
 placeViewRoutes.get('/list', async (c) => {
   const { name, type, id, limit = 20, offset = 0 } = c.req.query();
-  let query = db('places');
+
+  let sql = 'SELECT * FROM places WHERE 1=1';
+  const params: any = {};
 
   if (name) {
-    query = query.where(function () {
-      this.where('name', 'like', `%${name}%`).orWhere(
-        'additional_names',
-        'like',
-        `%${name}%`
-      );
-    });
+    sql += ' AND (name LIKE $name OR additional_names LIKE $name)';
+    params.$name = `%${name}%`;
   }
   if (type) {
-    query = query.where('type_of_place', type);
+    sql += ' AND type_of_place = $type';
+    params.$type = type;
   }
   if (id) {
-    query = query.where('id', 'like', `${id}%`);
+    sql += ' AND id LIKE $id';
+    params.$id = `${id}%`;
   }
 
-  const results = await query.limit(Number(limit)).offset(Number(offset));
+  sql += ' LIMIT $limit OFFSET $offset';
+  params.$limit = Number(limit);
+  params.$offset = Number(offset);
+
+  const query = sqlDb.query(sql);
+  const results = query.all(params);
+
   return c.json(createSuccessResponse(results));
 });
 
@@ -33,7 +40,10 @@ placeViewRoutes.get('/list', async (c) => {
 // GET /api/place/:id - View One Place
 placeViewRoutes.get(':id', async (c) => {
   const { id } = c.req.param();
-  const place = await db('places').where({ id }).first();
+
+  const query = sqlDb.query('SELECT * FROM places WHERE id = $id');
+  const place = query.get({ $id: id });
+
   if (!place) {
     return c.json(createErrorResponse(ErrorMessages.PLACE_NOT_FOUND), 404);
   }
