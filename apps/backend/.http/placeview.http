@@ -1,0 +1,7 @@
+### View One Place
+GET {{baseurl}}/api/public/place/ABC4567890
+
+
+### List of Places
+GET {{baseurl}}/api/public/place/list?id=AB
+

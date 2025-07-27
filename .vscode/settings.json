@@ -8,4 +8,12 @@
     "editor.defaultFormatter": "Vue.volar"
   },
   "npm.packageManager": "bun",
+  "rest-client.defaultHeaders": {
+    "Content-Type": "application/json",
+  },
+  "rest-client.environmentVariables": {
+    "local": {
+      "baseurl": "http://localhost:5002"
+    },
+  },
 }
