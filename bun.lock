@@ -8,15 +8,29 @@
         "typescript": "latest",
       },
     },
+    "apps/backend": {
+      "name": "@atlas/backend",
+      "devDependencies": {
+        "@atlas/types": "workspace:*",
+        "@atlas/utils": "workspace:*",
+        "@types/bun": "latest",
+      },
+      "peerDependencies": {
+        "typescript": "latest",
+      },
+    },
+    "apps/local": {
+      "name": "local",
+    },
     "packages/types": {
-      "name": "@jamku/types",
+      "name": "@atlas/types",
       "version": "1.0.0",
       "devDependencies": {
         "typescript": "latest",
       },
     },
     "packages/utils": {
-      "name": "@jamku/utils",
+      "name": "@atlas/utils",
       "version": "1.0.0",
       "dependencies": {
         "libphonenumber-js": "catalog:",
@@ -34,9 +48,11 @@
     "zod": "4.0.5",
   },
   "packages": {
-    "@jamku/types": ["@jamku/types@workspace:packages/types"],
+    "@atlas/backend": ["@atlas/backend@workspace:apps/backend"],
 
-    "@jamku/utils": ["@jamku/utils@workspace:packages/utils"],
+    "@atlas/types": ["@atlas/types@workspace:packages/types"],
+
+    "@atlas/utils": ["@atlas/utils@workspace:packages/utils"],
 
     "@types/bun": ["@types/bun@1.2.19", "", { "dependencies": { "bun-types": "1.2.19" } }, "sha512-d9ZCmrH3CJ2uYKXQIUuZ/pUnTqIvLDS0SK7pFmbx8ma+ziH/FRMoAq5bYpRG7y+w1gl+HgyNZbtqgMq4W4e2Lg=="],
 
@@ -49,6 +65,8 @@
     "csstype": ["csstype@3.1.3", "", {}, "sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw=="],
 
     "libphonenumber-js": ["libphonenumber-js@1.12.10", "", {}, "sha512-E91vHJD61jekHHR/RF/E83T/CMoaLXT7cwYA75T4gim4FZjnM6hbJjVIGg7chqlSqRsSvQ3izGmOjHy1SQzcGQ=="],
+
+    "local": ["local@workspace:apps/local"],
 
     "typescript": ["typescript@5.8.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ=="],
 
