@@ -1,6 +1,6 @@
-const PORT_LOCAL = 8000;
-const PORT_BACKEND = 5100;
-const PORT_FRONTEND = 5200;
+const PORT_LOCAL = 5001;
+const PORT_BACKEND = 5002;
+const PORT_FRONTEND = 5003;
 
 
 const server = Bun.serve({
