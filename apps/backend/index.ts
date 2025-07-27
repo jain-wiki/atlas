@@ -5,8 +5,14 @@ import { auth } from "./lib/auth";
 import { errorHandler } from "./routes/middleware/errorhandler";
 import { securityHeaders, corsHeaders } from "./routes/middleware/security";
 import { apiRoutes } from "./routes/route";
+import type { Session, User } from './lib/auth'
 
-const app = new Hono();
+const app = new Hono<{
+  Variables: {
+    user: User | null;
+    session: Session | null;
+  }
+}>();
 
 // Add security middleware
 app.use('*', securityHeaders);
