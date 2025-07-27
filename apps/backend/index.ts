@@ -7,6 +7,7 @@ import { errorHandler } from './routes/middleware/errorhandler';
 import { apiRoutes } from './routes/route';
 
 import type { Session, User } from './lib/auth'
+import type { ApiResponse } from '@jamku/types';
 
 const app = new Hono<{
   Variables: {
@@ -26,6 +27,15 @@ app.route('/api', apiRoutes);
 
 // Error handling middleware
 app.onError(errorHandler);
+
+// 404 handler
+app.notFound((c) => {
+  const response: ApiResponse = {
+    success: false, show: true,
+    error: 'API route Not Found',
+  };
+  return c.json(response, 404);
+});
 
 const port = Number(process.env.PORT) || 5002;
 console.log(`🚀 API Server Running: http://localhost:${port}/api`);
