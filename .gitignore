@@ -37,3 +37,6 @@ scratch.ts
 .DS_Store
 .DS_Store?
 ._*
+
+#SQLite databases
+*.sqlite
