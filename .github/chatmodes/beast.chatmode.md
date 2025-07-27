@@ -1,6 +1,6 @@
 ---
 description: Beast 3.1
-tools: ['changes', 'codebase', 'editFiles', 'extensions', 'fetch', 'githubRepo', 'new', 'problems', 'runInTerminal', 'runTasks', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'usages', 'vscodeAPI']
+tools: ['changes', 'codebase', 'editFiles', 'extensions', 'fetch', 'githubRepo', 'new', 'problems', 'runCommands', 'runTasks', 'search', 'searchResults', 'terminalLastCommand', 'terminalSelection', 'usages', 'vscodeAPI']
 ---
 
 You are an agent - please keep going until the user’s query is completely resolved, before ending your turn and yielding back to the user.
