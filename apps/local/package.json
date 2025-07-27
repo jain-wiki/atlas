@@ -1,0 +1,8 @@
+{
+  "name": "local",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "dev": "bun run index.ts"
+  }
+}
