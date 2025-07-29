@@ -68,6 +68,9 @@ CREATE TABLE IF NOT EXISTS places (
     additional_names TEXT,
     type_of_place TEXT,
     description TEXT,
+    lat REAL NOT NULL,
+    lng REAL NOT NULL,
+    links TEXT, -- JSON Array of links
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
