@@ -40,3 +40,6 @@ scratch.ts
 
 #SQLite databases
 *.sqlite
+*.sqlite-wal
+*.sqlite-shm
+

@@ -1,8 +1,6 @@
 import { Hono } from 'hono';
 import { createSuccessResponse, createErrorResponse, ErrorMessages } from './middleware/responses';
-
-// @ts-ignore
-import sqlDb from '../db.sqlite' with { "type": "sqlite" };
+import { db } from '../lib/db'
 
 export const placeViewRoutes = new Hono();
 
@@ -30,7 +28,7 @@ placeViewRoutes.get('/list', async (c) => {
   params.$limit = Number(limit);
   params.$offset = Number(offset);
 
-  const query = sqlDb.query(sql);
+  const query = db.query(sql);
   const results = query.all(params);
 
   return c.json(createSuccessResponse(results));
@@ -41,7 +39,7 @@ placeViewRoutes.get('/list', async (c) => {
 placeViewRoutes.get(':id', async (c) => {
   const { id } = c.req.param();
 
-  const query = sqlDb.query('SELECT * FROM places WHERE id = $id');
+  const query = db.query('SELECT * FROM places WHERE id = $id');
   const place = query.get({ $id: id });
 
   if (!place) {

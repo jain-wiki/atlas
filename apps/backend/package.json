@@ -4,15 +4,12 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "bun run --watch index.ts",
-    "migrate": "bunx knex migrate:latest",
-    "rollback": "bunx knex migrate:rollback"
+    "dev": "bun run --watch index.ts"
   },
   "private": true,
   "devDependencies": {
     "@atlas/types": "workspace:*",
     "@atlas/utils": "workspace:*",
-    "@types/better-sqlite3": "^7.6.13",
     "@types/bun": "latest"
   },
   "peerDependencies": {
@@ -21,9 +18,7 @@
   "dependencies": {
     "@hono/node-server": "^1.17.1",
     "better-auth": "^1.3.4",
-    "better-sqlite3": "^12.2.0",
     "hono": "^4.8.9",
-    "knex": "^3.1.0",
     "nanoid": "^5.1.5",
     "zod": "^4.0.10"
   }

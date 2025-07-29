@@ -1,4 +1,4 @@
-import db from "../lib/db";
+import { db } from "../lib/db";
 
 export async function logPlaceAction(
   placeId: string,
@@ -7,11 +7,16 @@ export async function logPlaceAction(
   newData: any,
   userEmail: string
 ) {
-  await db("places_log").insert({
-    place_id: placeId,
-    action,
-    old_data: JSON.stringify(oldData),
-    new_data: JSON.stringify(newData),
-    user_email: userEmail,
+  const query = db.query(`
+    INSERT INTO places_log (place_id, action, old_data, new_data, user_email)
+    VALUES ($place_id, $action, $old_data, $new_data, $user_email)
+  `);
+
+  query.run({
+    $place_id: placeId,
+    $action: action,
+    $old_data: JSON.stringify(oldData),
+    $new_data: JSON.stringify(newData),
+    $user_email: userEmail,
   });
 }
