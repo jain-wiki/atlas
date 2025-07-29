@@ -10,6 +10,9 @@ export async function up(knex: Knex): Promise<void> {
     table.text('image').nullable();
     table.date('createdAt').notNullable();
     table.date('updatedAt').notNullable();
+
+    // Indexes for performance optimization
+    table.index(['email']);
   });
 
   // Create session table
@@ -22,6 +25,10 @@ export async function up(knex: Knex): Promise<void> {
     table.text('ipAddress').nullable();
     table.text('userAgent').nullable();
     table.text('userId').notNullable().references('id').inTable('user');
+
+    // Indexes for performance optimization
+    table.index(['userId']);
+    table.index(['token']);
   });
 
   // Create account table
@@ -39,6 +46,9 @@ export async function up(knex: Knex): Promise<void> {
     table.text('password').nullable();
     table.date('createdAt').notNullable();
     table.date('updatedAt').notNullable();
+
+    // Indexes for performance optimization
+    table.index(['userId']);
   });
 
   // Create verification table
@@ -49,6 +59,9 @@ export async function up(knex: Knex): Promise<void> {
     table.date('expiresAt').notNullable();
     table.date('createdAt').nullable();
     table.date('updatedAt').nullable();
+
+    // Indexes for performance optimization
+    table.index(['identifier']);
   });
 }
 
