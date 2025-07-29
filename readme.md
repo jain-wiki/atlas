@@ -1,5 +1,18 @@
 # Jain Atlas
-Jain Atlas is a monorepo for the Jain Atlas project, which includes various applications and utilities.
+Jain Atlas is a main (monorepo) for the Jain Atlas project, which includes various applications and utilities.
+
+## About Jain Atlas Project
+The Jain Atlas project is to create a comprehensive platform for Jain Places, including an API and a web application. The project aims to provide easy access to information for the Jain community to build upon.
+The current scope is limited to India, Nepal, Bhutan, and Sri Lanka. It can be extended to other countries in the future.
+
+Types of Jain Places:
+- `T` Temples
+- `H` Hospitals
+- `S` Schools
+- `L` Libraries
+- `C` Community Centers (Samaj Bhavans)
+- `B` Dining Halls (Bhojanshalas)
+
 
 ## Development Setup
 
