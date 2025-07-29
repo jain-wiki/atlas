@@ -10,10 +10,13 @@ export const placeUpdateRoutes = new Hono()
 
 // Zod schema for place creation
 const placeSchema = z.object({
-  name: z.string().min(1).max(100),
-  additional_names: z.string().max(500).optional(),
-  type_of_place: z.string().length(1),
+  name1: z.string().min(1).max(100),
+  name2: z.string().max(500).optional(),
+  type: z.string().max(50).optional(),
   description: z.string().max(1000).optional(),
+  lat: z.number().min(-90).max(90),
+  lng: z.number().min(-180).max(180),
+  links: z.array(z.string().url()).optional(),
 })
 
 // PUT /api/p/place/:id - Edit Place (Protected)
@@ -39,27 +42,33 @@ placeUpdateRoutes.put('/:id', async (c) => {
   }
 
   const updatedPlace = {
-    name: data.name,
-    additional_names: data.additional_names || null,
-    type_of_place: data.type_of_place,
+    name1: data.name1,
+    name2: data.name2 || null,
+    type: data.type || null,
     description: data.description || null,
-    updated_at: new Date().toISOString(),
+    lat: data.lat,
+    lng: data.lng,
+    links: data.links ? JSON.stringify(data.links) : null,
+    updatedAt: new Date().toISOString(),
   }
 
   const updateQuery = db.query(`
     UPDATE places
-    SET name = $name, additional_names = $additional_names, type_of_place = $type_of_place,
-        description = $description, updated_at = $updated_at
+    SET name1 = $name1, name2 = $name2, type = $type,
+        description = $description, lat = $lat, lng = $lng, links = $links, updatedAt = $updatedAt
     WHERE id = $id
   `);
 
   updateQuery.run({
     $id: id,
-    $name: updatedPlace.name,
-    $additional_names: updatedPlace.additional_names,
-    $type_of_place: updatedPlace.type_of_place,
+    $name1: updatedPlace.name1,
+    $name2: updatedPlace.name2,
+    $type: updatedPlace.type,
     $description: updatedPlace.description,
-    $updated_at: updatedPlace.updated_at,
+    $lat: updatedPlace.lat,
+    $lng: updatedPlace.lng,
+    $links: updatedPlace.links,
+    $updatedAt: updatedPlace.updatedAt,
   });
 
   // @ts-ignore - user.email is guaranteed to exist due to check above
@@ -84,23 +93,29 @@ placeUpdateRoutes.post('/', async (c) => {
 
   const newPlace = {
     id,
-    name: data.name,
-    additional_names: data.additional_names || null,
-    type_of_place: data.type_of_place,
+    name1: data.name1,
+    name2: data.name2 || null,
+    type: data.type || null,
     description: data.description || null,
+    lat: data.lat,
+    lng: data.lng,
+    links: data.links ? JSON.stringify(data.links) : null,
   }
 
   const insertQuery = db.query(`
-    INSERT INTO places (id, name, additional_names, type_of_place, description)
-    VALUES ($id, $name, $additional_names, $type_of_place, $description)
+    INSERT INTO places (id, name1, name2, type, description, lat, lng, links)
+    VALUES ($id, $name1, $name2, $type, $description, $lat, $lng, $links)
   `);
 
   insertQuery.run({
     $id: newPlace.id,
-    $name: newPlace.name,
-    $additional_names: newPlace.additional_names,
-    $type_of_place: newPlace.type_of_place,
+    $name1: newPlace.name1,
+    $name2: newPlace.name2,
+    $type: newPlace.type,
     $description: newPlace.description,
+    $lat: newPlace.lat,
+    $lng: newPlace.lng,
+    $links: newPlace.links,
   });
 
   // @ts-ignore - user.email is guaranteed to exist due to check above

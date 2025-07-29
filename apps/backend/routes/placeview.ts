@@ -12,11 +12,11 @@ placeViewRoutes.get('/list', async (c) => {
   const params: any = {};
 
   if (name) {
-    sql += ' AND (name LIKE $name OR additional_names LIKE $name)';
+    sql += ' AND (name1 LIKE $name OR name2 LIKE $name)';
     params.$name = `%${name}%`;
   }
   if (type) {
-    sql += ' AND type_of_place = $type';
+    sql += ' AND type = $type';
     params.$type = type;
   }
   if (id) {
