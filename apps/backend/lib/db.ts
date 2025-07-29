@@ -3,7 +3,9 @@
 import { Database } from 'bun:sqlite';
 
 export const db = new Database('db.sqlite', {
-  create: true,
+  // Don't create a new database file. If user needs to create a new database, they should run this file directly.
+  //  cd apps/backend && bun run lib/db.ts
+  create: false,
   strict: true,
 });
 
@@ -28,11 +30,12 @@ process.on('SIGINT', () => {
 });
 
 
-// Initialize database schema, if this file is run directly
-// This is useful for development and testing purposes
+// Initialize database schema, if this file is run directly.
+// ```cd apps/backend && bun run lib/db.ts```
 // @ts-ignore
 import sqlText from './schema.sql' with { type: 'text' };
 if (import.meta.main) {
+  const db = new Database('db.sqlite', { create: true });
   db.exec(sqlText);
   console.log('Database initialized and ready to use. Ensure that the db.sqlite file is moved to the ``apps/backend/lib/`` directory.');
 }
