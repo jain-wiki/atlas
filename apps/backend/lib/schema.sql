@@ -8,8 +8,8 @@ CREATE TABLE IF NOT EXISTS user (
     email TEXT NOT NULL UNIQUE,
     emailVerified INTEGER NOT NULL,
     image TEXT,
-    createdAt DATE NOT NULL,
-    updatedAt DATE NOT NULL
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL
 ) STRICT, WITHOUT ROWID;
 
 -- Create indexes for user table
@@ -18,10 +18,10 @@ CREATE INDEX IF NOT EXISTS idx_user_email ON user(email);
 -- Create session table
 CREATE TABLE IF NOT EXISTS session (
     id TEXT NOT NULL PRIMARY KEY,
-    expiresAt DATE NOT NULL,
+    expiresAt TEXT NOT NULL,
     token TEXT NOT NULL UNIQUE,
-    createdAt DATE NOT NULL,
-    updatedAt DATE NOT NULL,
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL,
     ipAddress TEXT,
     userAgent TEXT,
     userId TEXT NOT NULL REFERENCES user(id)
@@ -40,12 +40,12 @@ CREATE TABLE IF NOT EXISTS account (
     accessToken TEXT,
     refreshToken TEXT,
     idToken TEXT,
-    accessTokenExpiresAt DATE,
-    refreshTokenExpiresAt DATE,
+    accessTokenExpiresAt TEXT,
+    refreshTokenExpiresAt TEXT,
     scope TEXT,
     password TEXT,
-    createdAt DATE NOT NULL,
-    updatedAt DATE NOT NULL
+    createdAt TEXT NOT NULL,
+    updatedAt TEXT NOT NULL
 ) STRICT, WITHOUT ROWID;
 
 -- Create indexes for account table
@@ -56,9 +56,9 @@ CREATE TABLE IF NOT EXISTS verification (
     id TEXT NOT NULL PRIMARY KEY,
     identifier TEXT NOT NULL,
     value TEXT NOT NULL,
-    expiresAt DATE NOT NULL,
-    createdAt DATE,
-    updatedAt DATE
+    expiresAt TEXT NOT NULL,
+    createdAt TEXT,
+    updatedAt TEXT
 ) STRICT, WITHOUT ROWID;
 
 -- Create places table
@@ -71,8 +71,8 @@ CREATE TABLE IF NOT EXISTS places (
     lat REAL NOT NULL,
     lng REAL NOT NULL,
     links TEXT, -- JSON Array of links
-    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+    createdAt TEXT DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
 ) STRICT, WITHOUT ROWID;
 
 -- Create Full Text Search (FTS) index for places table for name1 and name2
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS places_log (
     old_data TEXT, -- JSON
     new_data TEXT, -- JSON
     user_email TEXT,
-    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+    createdAt TEXT DEFAULT CURRENT_TIMESTAMP
 ) STRICT, WITHOUT ROWID;
 
 -- Create indexes for places_log table
