@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS user (
     image TEXT,
     createdAt DATE NOT NULL,
     updatedAt DATE NOT NULL
-);
+) STRICT, WITHOUT ROWID;
 
 -- Create indexes for user table
 CREATE INDEX IF NOT EXISTS idx_user_email ON user(email);
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS session (
     ipAddress TEXT,
     userAgent TEXT,
     userId TEXT NOT NULL REFERENCES user(id)
-);
+) STRICT, WITHOUT ROWID;
 
 -- Create indexes for session table
 CREATE INDEX IF NOT EXISTS idx_session_userId ON session(userId);
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS account (
     password TEXT,
     createdAt DATE NOT NULL,
     updatedAt DATE NOT NULL
-);
+) STRICT, WITHOUT ROWID;
 
 -- Create indexes for account table
 CREATE INDEX IF NOT EXISTS idx_account_userId ON account(userId);
@@ -59,20 +59,28 @@ CREATE TABLE IF NOT EXISTS verification (
     expiresAt DATE NOT NULL,
     createdAt DATE,
     updatedAt DATE
-);
+) STRICT, WITHOUT ROWID;
 
 -- Create places table
 CREATE TABLE IF NOT EXISTS places (
     id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    additional_names TEXT,
-    type_of_place TEXT,
+    name1 TEXT NOT NULL,
+    name2 TEXT,
+    type TEXT,
     description TEXT,
     lat REAL NOT NULL,
     lng REAL NOT NULL,
     links TEXT, -- JSON Array of links
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+) STRICT, WITHOUT ROWID;
+
+-- Create Full Text Search (FTS) index for places table for name1 and name2
+CREATE VIRTUAL TABLE IF NOT EXISTS places_fts USING fts5(
+    name1,
+    name2,
+    content='places',
+    content_rowid='id'
 );
 
 -- Create places_log table
@@ -83,8 +91,12 @@ CREATE TABLE IF NOT EXISTS places_log (
     old_data TEXT, -- JSON
     new_data TEXT, -- JSON
     user_email TEXT,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+) STRICT, WITHOUT ROWID;
+
+-- Create indexes for places_log table
+CREATE INDEX IF NOT EXISTS idx_places_log_place_id ON places_log(place_id);
+CREATE INDEX IF NOT EXISTS idx_places_log_createdAt ON places_log(createdAt);
 
 
 -- Enable foreign key constraints
