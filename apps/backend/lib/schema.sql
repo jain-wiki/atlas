@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS places_log (
     new_data TEXT, -- JSON
     user_email TEXT,
     createdAt TEXT DEFAULT CURRENT_TIMESTAMP
-) STRICT, WITHOUT ROWID;
+) STRICT; -- Cannot use "WITHOUT ROWID" because it has AUTOINCREMENT;
 
 -- Create indexes for places_log table
 CREATE INDEX IF NOT EXISTS idx_places_log_place_id ON places_log(place_id);
