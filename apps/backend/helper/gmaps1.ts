@@ -1,19 +1,19 @@
 // Ref: https://developers.google.com/maps/documentation/places/web-service/text-search
 
 import axios from 'axios';
-import type { LocationRestriction } from '@atlas/types/maps';
+import type { LocationRestriction, Place } from '@atlas/types/maps';
 
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || '';
+const PAGES_LIMIT = 3; // Limit to 3 pages of results
 
 const mapsFieldMask = [
   // Essentials Only SKU:
   'places.id',
-  'places.name',
+  // 'places.name', // This is not needed, hence commented out
   'places.attributions',
   'nextPageToken', // Token for the next page of results
   // Text Search Pro SKU:
   'places.displayName', // Display name of the place
-  'places.adrFormatAddress',
   'places.formattedAddress',
   'places.postalAddress',
   'places.plusCode',
@@ -26,33 +26,51 @@ const mapsFieldMask = [
 
 
 
-async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction, nextPageToken?: string, pageCount: number = 1) {
+async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction, pageCount: number = 1, nextPageToken?: string,) {
+  let allPlaces: Place[] = [];
+  let currentPageToken = nextPageToken;
+  let currentPageCount = pageCount;
 
-  const response = await axios.post(
-    'https://places.googleapis.com/v1/places:searchText',
-    {
-      textQuery: 'jain temples',
-      languageCode: 'en',
-      locationRestriction: locationRestriction,
-      pageToken: nextPageToken || undefined, // Use nextPageToken if provided.
-    },
-    {
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY,
-        'X-Goog-FieldMask': mapsFieldMask,
+  // Make up to 3 API calls
+  while (currentPageCount <= PAGES_LIMIT) {
+    const response = await axios.post(
+      'https://places.googleapis.com/v1/places:searchText',
+      {
+        textQuery: 'jain temples',
+        languageCode: 'en',
+        locationRestriction: locationRestriction,
+        pageToken: currentPageToken || undefined, // Use currentPageToken if provided.
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY,
+          'X-Goog-FieldMask': mapsFieldMask,
+        }
       }
+    );
+
+    const places = response.data?.places || [];
+    allPlaces = allPlaces.concat(places);
+
+    const responsePageToken = response.data?.nextPageToken;
+
+    // Log warning on final call
+    if (currentPageCount === PAGES_LIMIT && responsePageToken) {
+      console.warn(`Fetching ${PAGES_LIMIT} page of results. This is the final page that will be fetched. There are still more results available, but this function is limited to ${PAGES_LIMIT} pages.`);
     }
-  );
 
+    // If no more pages or we've reached our limit, break
+    if (!responsePageToken || currentPageCount >= PAGES_LIMIT) {
+      break;
+    }
 
-  const places = response.data.places || [];
-  const responsePageToken = response.data.nextPageToken;
-  if (responsePageToken) {
-    // TODO: Handle pagination
+    // Prepare for next iteration
+    currentPageToken = responsePageToken;
+    currentPageCount++;
   }
 
-  return places;
+  return allPlaces;
 
 }
 
