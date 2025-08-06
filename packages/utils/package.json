@@ -4,7 +4,9 @@
   "description": "Shared utility functions for Atlas",
   "main": "src/index.ts",
   "dependencies": {
-    "libphonenumber-js": "catalog:"
+    "digipinindia": "catalog:",
+    "libphonenumber-js": "catalog:",
+    "dayjs": "catalog:"
   },
   "devDependencies": {
     "typescript": "latest"
