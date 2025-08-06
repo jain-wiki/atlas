@@ -98,6 +98,39 @@ CREATE TABLE IF NOT EXISTS places_log (
 CREATE INDEX IF NOT EXISTS idx_places_log_place_id ON places_log(place_id);
 CREATE INDEX IF NOT EXISTS idx_places_log_createdAt ON places_log(createdAt);
 
+-- Create google maps places table
+CREATE TABLE IF NOT EXISTS gmaps_places (
+    id TEXT PRIMARY KEY, -- cid extracted from googleMapsUri
+    lat REAL NOT NULL,
+    lng REAL NOT NULL,
+    rtree_id INTEGER NOT NULL, -- R*Tree index id
+    administrativeArea TEXT, -- e.g., "Maharashtra"
+    locality TEXT, -- e.g., "Thane"
+    pincode TEXT, -- e.g., "400602"
+    digipin5 TEXT NOT NULL, -- first 5 characters of Digipin
+    response TEXT NOT NULL, -- JSON response from Google Maps API
+    createdAt TEXT DEFAULT CURRENT_TIMESTAMP
+) STRICT, WITHOUT ROWID;
+
+-- Create indexes for gmaps_places table
+CREATE INDEX IF NOT EXISTS idx_gmaps_places_locality ON gmaps_places(locality);
+CREATE INDEX IF NOT EXISTS idx_gmaps_places_pincode ON gmaps_places(pincode);
+CREATE INDEX IF NOT EXISTS idx_gmaps_places_digipin5 ON gmaps_places(digipin5);
+
+-- Create R*Tree index for gmaps_places table
+CREATE VIRTUAL TABLE gmaps_places_index USING rtree(
+    id,             -- Integer primary key autoincrement
+    minX, maxX,     -- Minimum and maximum X coordinate
+    minY, maxY      -- Minimum and maximum Y coordinate
+);
+
+-- Create trigger to delete R*Tree entry when gmaps_places entry is deleted
+CREATE TRIGGER IF NOT EXISTS delete_gmaps_places_index
+AFTER DELETE ON gmaps_places
+BEGIN
+    DELETE FROM gmaps_places_index WHERE id = OLD.rtree_id;
+END;
+
 
 -- Enable foreign key constraints
 PRAGMA foreign_keys = ON;
