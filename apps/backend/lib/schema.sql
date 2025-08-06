@@ -101,8 +101,6 @@ CREATE INDEX IF NOT EXISTS idx_places_log_createdAt ON places_log(createdAt);
 -- Create google maps places table
 CREATE TABLE IF NOT EXISTS gmaps_places (
     id TEXT PRIMARY KEY, -- cid extracted from googleMapsUri
-    lat TEXT NOT NULL,
-    lng TEXT NOT NULL,
     rtree_id INTEGER NOT NULL, -- R*Tree index id
     displayName TEXT NOT NULL,
     administrativeArea TEXT, -- e.g., "Maharashtra"

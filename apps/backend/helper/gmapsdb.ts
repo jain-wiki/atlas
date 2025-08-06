@@ -8,9 +8,9 @@ import { getDigipinPrefix } from '@atlas/utils/digipinutils';
 const checkStatement = db.prepare('SELECT id FROM gmaps_places WHERE id = ?');
 // This will be used to insert places into the gmaps_places table
 const insertStmt = db.prepare(`INSERT INTO gmaps_places
-    (id, lat, lng, rtree_id, displayName, administrativeArea, locality, pincode, digipin5, response )
+    (id, rtree_id, displayName, administrativeArea, locality, pincode, digipin5, response )
     VALUES
-    ($id, $lat, $lng, $rtree_id, $displayName, $administrativeArea, $locality, $pincode, $digipin5, $response)`
+    ($id, $rtree_id, $displayName, $administrativeArea, $locality, $pincode, $digipin5, $response)`
 )
 
 export function insertPlaces(places: Place[]) {
@@ -38,8 +38,6 @@ function insertPlaceInDb(place: Place) {
   const response = JSON.stringify(place);
   const insertObj = {
     $id: cid,
-    $lat: String(place.location.latitude),
-    $lng: String(place.location.longitude),
     // $rtree_id: undefined, // This will be set later
     $displayName: place.displayName?.text || '',
     $administrativeArea: place.postalAddress?.administrativeArea || '',
