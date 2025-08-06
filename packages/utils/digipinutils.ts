@@ -1,3 +1,5 @@
+import { getDigiPin } from 'digipinindia'
+
 // Create a lookup map for O(1) character position finding
 const DIGIPIN_CHAR_MAP = new Map([
   ['F', { row: 0, col: 0 }], ['C', { row: 0, col: 1 }], ['9', { row: 0, col: 2 }], ['8', { row: 0, col: 3 }],
@@ -45,4 +47,12 @@ export function getBoundingBoxFromDigiPINPrefix(prefix: string): {
     minLng,
     maxLng
   };
+}
+
+export function getDigipinPrefix(latitude: number, longitude: number): string {
+  const fullDigiPin = getDigiPin(latitude, longitude);
+  // Remove "-" from the full DigiPin
+  fullDigiPin.replace(/-/g, '');
+  // Return the first 5 characters as the prefix
+  return fullDigiPin.substring(0, 5);
 }
