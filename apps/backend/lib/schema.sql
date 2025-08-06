@@ -101,9 +101,10 @@ CREATE INDEX IF NOT EXISTS idx_places_log_createdAt ON places_log(createdAt);
 -- Create google maps places table
 CREATE TABLE IF NOT EXISTS gmaps_places (
     id TEXT PRIMARY KEY, -- cid extracted from googleMapsUri
-    lat REAL NOT NULL,
-    lng REAL NOT NULL,
+    lat TEXT NOT NULL,
+    lng TEXT NOT NULL,
     rtree_id INTEGER NOT NULL, -- R*Tree index id
+    displayName TEXT NOT NULL,
     administrativeArea TEXT, -- e.g., "Maharashtra"
     locality TEXT, -- e.g., "Thane"
     pincode TEXT, -- e.g., "400602"
@@ -113,6 +114,7 @@ CREATE TABLE IF NOT EXISTS gmaps_places (
 ) STRICT, WITHOUT ROWID;
 
 -- Create indexes for gmaps_places table
+CREATE INDEX IF NOT EXISTS idx_gmaps_places_administrativeArea ON gmaps_places(administrativeArea);
 CREATE INDEX IF NOT EXISTS idx_gmaps_places_locality ON gmaps_places(locality);
 CREATE INDEX IF NOT EXISTS idx_gmaps_places_pincode ON gmaps_places(pincode);
 CREATE INDEX IF NOT EXISTS idx_gmaps_places_digipin5 ON gmaps_places(digipin5);
