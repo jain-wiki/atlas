@@ -26,10 +26,10 @@ const mapsFieldMask = [
 
 
 
-async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction, pageCount: number = 1, nextPageToken?: string,) {
+async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction) {
   let allPlaces: Place[] = [];
-  let currentPageToken = nextPageToken;
-  let currentPageCount = pageCount;
+  let currentPageToken = undefined as string | undefined;
+  let currentPageCount = 1;
 
   // Make up to 3 API calls
   while (currentPageCount <= PAGES_LIMIT) {
