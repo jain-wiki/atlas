@@ -26,3 +26,12 @@ You will need to install Bun to run the project. Follow the instructions on the 
 - `packages/`: Contains shared packages and utilities used by the applications.
   - `packages/utils/`: Shared utilities and constants.
   - `packages/types/`: Type definitions used across the project.
+
+## SPARQL Queries
+When using SPARQL queries, use the following prefixes:
+```
+PREFIX wd: <http://data.jain.wiki/entity/>
+PREFIX wdt: <http://data.jain.wiki/prop/direct/>
+
+```
+
