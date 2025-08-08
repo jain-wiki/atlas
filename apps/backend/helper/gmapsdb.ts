@@ -5,13 +5,18 @@ import { getDigipinPrefix } from '@atlas/utils/digipinutils';
 
 
 // This will be used to check if a place already exists in the gmaps_places table
-const checkStatement = db.prepare('SELECT id FROM gmaps_places WHERE id = ?');
+const checkStatement = db.prepare('SELECT id FROM gmaps_places WHERE id = ?;');
 // This will be used to insert places into the gmaps_places table
 const insertStmt = db.prepare(`INSERT INTO gmaps_places
-    (id, rtree_id, displayName, administrativeArea, locality, pincode, digipin5, response )
-    VALUES
-    ($id, $rtree_id, $displayName, $administrativeArea, $locality, $pincode, $digipin5, $response)`
-)
+  (id, rtree_id, displayName, administrativeArea, locality, pincode, digipin5, response )
+  VALUES
+  ($id, $rtree_id, $displayName, $administrativeArea, $locality, $pincode, $digipin5, $response);`)
+// This will be used to insert places into the gmaps_places_index table
+const placeIndexInsertStmt = db.prepare(`
+  INSERT INTO gmaps_places_index
+  (minX, maxX, minY, maxY)
+  VALUES
+  ($minX, $maxX, $minY, $maxY);`)
 
 export function insertPlaces(places: Place[]) {
   // Loop through each place and insert it into the database
@@ -21,7 +26,8 @@ export function insertPlaces(places: Place[]) {
     if (!cid) { continue; } // Skip if no cid is found
     const existingPlace = checkStatement.get(cid);
     if (existingPlace) {
-      continue; // Skip if the place already exists
+      // TODO: Think of updating the existing place. Current implementation skips it.
+      continue;
     } else {
       insertPlaceInDb(place);
     }
@@ -34,44 +40,34 @@ function insertPlaceInDb(place: Place) {
   const cid = getCidFromGoogleMapsUri(place.googleMapsUri);
   if (!cid) { return }
 
-
   const response = JSON.stringify(place);
-  const insertObj = {
-    $id: cid,
-    // $rtree_id: undefined, // This will be set later
-    $displayName: place.displayName?.text || '',
-    $administrativeArea: place.postalAddress?.administrativeArea || '',
-    $locality: place.postalAddress?.locality || '',
-    $pincode: place.postalAddress?.postalCode || '',
-    $digipin5: getDigipinPrefix(place.location.latitude, place.location.longitude),
-    $response: response,
-  }
 
-  // Use transaction
-  db.transaction(() => {
-    // 1st add the place to the gmaps_places_index table,
-    //   which will give us the id,
-    //   which will then be used to insert into the gmaps_places table as rtree_id
-    const { lastInsertRowid } = db.prepare(`
-      INSERT INTO gmaps_places_index
-      (minX, maxX, minY, maxY, cid)
-      VALUES
-      ($minX, $maxX, $minY, $maxY)
-    `).run({
-      $minX: place.location.longitude - 0.0001,
-      $maxX: place.location.longitude + 0.0001,
-      $minY: place.location.latitude - 0.0001,
-      $maxY: place.location.latitude + 0.0001,
-    })
+  // Use transaction to ensure both inserts succeed or both fail
+  const runTx = db.transaction(() => {
+    // 1st: Insert into the R*Tree index table
+    const { lastInsertRowid } = placeIndexInsertStmt.run({
+      minX: place.location.longitude - 0.0001,
+      maxX: place.location.longitude + 0.0001,
+      minY: place.location.latitude - 0.0001,
+      maxY: place.location.latitude + 0.0001
+    });
 
-    // 2nd add the place to the gmaps_places table
-    // @ts-ignore
-    insertObj.$rtree_id = lastInsertRowid;
+    // 2nd: Insert into the gmaps_places table using the R*Tree ID
+    const insertObj = {
+      id: cid,
+      rtree_id: lastInsertRowid,
+      displayName: place.displayName?.text || '',
+      administrativeArea: place.postalAddress?.administrativeArea || '',
+      locality: place.postalAddress?.locality || '',
+      pincode: place.postalAddress?.postalCode || '',
+      digipin5: getDigipinPrefix(place.location.latitude, place.location.longitude),
+      response: response,
+    };
+
     insertStmt.run(insertObj);
+  });
 
-  })
-
-
+  // Execute the transaction
+  runTx();
 }
-
 
