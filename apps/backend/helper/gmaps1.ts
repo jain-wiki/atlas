@@ -4,7 +4,7 @@ import axios from 'axios';
 import type { LocationRestriction, Place } from '@atlas/types/maps';
 
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY || '';
-const PAGES_LIMIT = 3; // Limit to 3 pages of results
+const PAGES_LIMIT = 4; // Limit to 3 pages of results
 
 const mapsFieldMask = [
   // Essentials Only SKU:
