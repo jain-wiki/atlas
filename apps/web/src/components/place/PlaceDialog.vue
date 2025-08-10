@@ -1,26 +1,20 @@
 <template>
   <QDialog :model-value="show" @update:model-value="$emit('update:show', $event)">
     <QCard style="min-width: 500px; max-width: 800px">
-      <QCardSection class="tw:bg-primary tw:text-white">
+      <QCardSection class="tw:bg-slate-700 tw:text-white">
         <div class="tw:text-h6">{{ place?.displayName }}</div>
       </QCardSection>
 
       <QCardSection v-if="place">
-        <div class="tw:space-y-4">
+        <div class="tw:space-y-2">
           <div>
-            <strong>Location:</strong> {{ place.locality }}, {{ place.administrativeArea }}
-          </div>
-          <div>
-            <strong>Pincode:</strong> {{ place.pincode }}
+            <strong>Location:</strong> {{ place.pincode }}, {{ place.locality }}, {{ place.administrativeArea }}
           </div>
           <div>
             <strong>Digipin5:</strong> {{ place.digipin5 }}
           </div>
           <div v-if="place.classification">
             <strong>Classification:</strong> {{ place.classification }}
-          </div>
-          <div>
-            <strong>Created:</strong> {{ formatDate(place.createdAt) }}
           </div>
           <div v-if="placeData">
             <strong>Address:</strong> {{ placeData.formattedAddress }}
@@ -75,14 +69,6 @@ const placeData = computed<PlaceData | null>(() => {
     return null
   }
 })
-
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric'
-  })
-}
 
 function openGoogleMapsFromDialog() {
   if (placeData.value?.googleMapsUri) {
