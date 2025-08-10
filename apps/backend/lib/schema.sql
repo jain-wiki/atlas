@@ -108,6 +108,7 @@ CREATE TABLE IF NOT EXISTS gmaps_places (
     pincode TEXT, -- e.g., "400602"
     digipin5 TEXT NOT NULL, -- first 5 characters of Digipin
     response TEXT NOT NULL, -- JSON response from Google Maps API
+    classification TEXT, -- e.g., "R(Rejected), T(Temple), C(Community Center)"
     createdAt TEXT DEFAULT CURRENT_TIMESTAMP
 ) STRICT, WITHOUT ROWID;
 
