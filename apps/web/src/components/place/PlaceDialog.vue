@@ -29,18 +29,37 @@
         </div>
       </QCardSection>
 
+      <!-- Classification Form -->
+      <QCardSection v-if="place && !successMessage">
+        <QSeparator class="tw:mb-4" />
+        <div class="tw:text-h6 tw:mb-4">Update Classification</div>
+        <QOptionGroup v-model="selectedClassification" :options="classificationOptions" color="primary" type="radio" />
+      </QCardSection>
+
+      <!-- Success Message -->
+      <QCardSection v-if="successMessage">
+        <QSeparator class="tw:mb-4" />
+        <div class="tw:text-center tw:py-4">
+          <QIcon name="check_circle" color="positive" size="3em" class="tw:mb-2" />
+          <div class="tw:text-positive tw:text-lg">{{ successMessage }}</div>
+        </div>
+      </QCardSection>
+
       <QCardActions align="right">
-        <QBtn v-if="placeData?.googleMapsUri" label="Open in Google Maps" color="primary"
+        <QBtn v-if="placeData?.googleMapsUri && !successMessage" label="Open in Google Maps" color="primary"
           @click="openGoogleMapsFromDialog" />
-        <QBtn label="Close" color="grey" flat @click="$emit('update:show', false)" />
+        <QBtn v-if="!successMessage && place" label="Update Classification" color="positive" :loading="updating"
+          :disable="!selectedClassification" @click="updateClassification" />
+        <QBtn label="Close" color="grey" flat @click="closeDialog" />
       </QCardActions>
     </QCard>
   </QDialog>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import type { Place } from '@atlas/types/src/gplace'
+import { Ax } from '@/helper/axios'
 
 interface PlaceData {
   formattedAddress?: string
@@ -57,9 +76,20 @@ const props = defineProps<{
   place: Place | null
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   'update:show': [value: boolean]
+  'place-updated': []
 }>()
+
+const updating = ref(false)
+const successMessage = ref('')
+const selectedClassification = ref('')
+
+const classificationOptions = [
+  { label: 'Temple', value: 'T' },
+  { label: 'Community', value: 'C' },
+  { label: 'Rejected', value: 'R' }
+]
 
 const placeData = computed<PlaceData | null>(() => {
   if (!props.place?.response) return null
@@ -69,6 +99,47 @@ const placeData = computed<PlaceData | null>(() => {
     return null
   }
 })
+
+// Reset form when dialog opens/closes or place changes
+watch([() => props.show, () => props.place], () => {
+  if (props.show && props.place) {
+    selectedClassification.value = props.place.classification || ''
+    successMessage.value = ''
+  }
+})
+
+async function updateClassification() {
+  if (!props.place || !selectedClassification.value) return
+
+  updating.value = true
+  try {
+    const response = await Ax.patch(`/public/gplace/classify/${props.place.id}`, {
+      classification: selectedClassification.value
+    })
+
+    if (response.data.success) {
+      successMessage.value = response.data.message || 'Classification updated successfully!'
+
+      // Emit event to parent to refresh data
+      setTimeout(() => {
+        emit('place-updated')
+      }, 1500) // Small delay to show success message
+    }
+  } catch (error) {
+    console.error('Error updating classification:', error)
+    // You could add error handling here if needed
+  }
+  updating.value = false
+}
+
+function closeDialog() {
+  emit('update:show', false)
+  // Reset state when closing
+  setTimeout(() => {
+    successMessage.value = ''
+    selectedClassification.value = ''
+  }, 300) // Small delay for dialog close animation
+}
 
 function openGoogleMapsFromDialog() {
   if (placeData.value?.googleMapsUri) {

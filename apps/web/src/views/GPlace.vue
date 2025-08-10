@@ -22,7 +22,11 @@
     </QCard>
 
     <!-- Place List Component -->
-    <PlaceList :places="places" :loading="loading" :pagination="pagination" @page-change="handlePageChange" />
+    <PlaceList :places="places" :loading="loading" :pagination="pagination" @page-change="handlePageChange"
+      @show-details="showPlaceDetails" />
+
+    <!-- Place Details Dialog -->
+    <PlaceDialog v-model:show="showDetails" :place="selectedPlace" @place-updated="handlePlaceUpdated" />
   </QPage>
 </template>
 
@@ -31,12 +35,15 @@ import { onMounted, ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { Ax } from '@/helper/axios'
 import PlaceList from '@/components/place/PlaceList.vue'
+import PlaceDialog from '@/components/place/PlaceDialog.vue'
 import type { Pagination } from '@atlas/types/src/list'
 import type { Place } from '@atlas/types/src/gplace'
 
 
 const loading = ref(false)
 const places = ref<Place[]>([])
+const showDetails = ref(false)
+const selectedPlace = ref<Place | null>(null)
 const searchForm = reactive({
   digipin5: '',
   locality: '',
@@ -104,6 +111,16 @@ function clearForm() {
 function handlePageChange(page: number) {
   pagination.pageNo = page
   getPlaces()
+}
+
+function showPlaceDetails(place: Place) {
+  selectedPlace.value = place
+  showDetails.value = true
+}
+
+function handlePlaceUpdated() {
+  showDetails.value = false
+  getPlaces() // Refresh the data after successful update
 }
 
 onMounted(() => {

@@ -14,7 +14,7 @@
     <!-- Places Grid -->
     <div v-else>
       <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-6 tw:mb-6">
-        <PlaceCard v-for="place in places" :key="place.id" :place="place" @show-details="showPlaceDetails(place)" />
+        <PlaceCard v-for="place in places" :key="place.id" :place="place" @show-details="emit('show-details', place)" />
       </div>
 
       <!-- Pagination Controls -->
@@ -37,17 +37,13 @@
       </div>
     </div>
 
-    <!-- Place Details Dialog -->
-    <PlaceDialog v-model:show="showDetails" :place="selectedPlace" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { Place } from '@atlas/types/src/gplace'
 import type { Pagination } from '@atlas/types/src/list'
 import PlaceCard from './PlaceCard.vue'
-import PlaceDialog from './PlaceDialog.vue'
 
 const props = defineProps<{
   places: Place[]
@@ -57,10 +53,8 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   'page-change': [page: number]
+  'show-details': [place: Place]
 }>()
-
-const showDetails = ref(false)
-const selectedPlace = ref<Place | null>(null)
 
 function previousPage() {
   if (props.pagination.pageNo > 1) {
@@ -81,9 +75,6 @@ function goToPage(page: number | string) {
   }
 }
 
-function showPlaceDetails(place: Place) {
-  selectedPlace.value = place
-  showDetails.value = true
-}
+
 
 </script>
