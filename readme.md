@@ -47,3 +47,7 @@ ORDER BY DESC(?modified)
 LIMIT 100
 ```
 
+## Special Pages
+
+- https://data.jain.wiki/wiki/Special:Log/delete
+- https://data.jain.wiki/wiki/Special:EntityData/Q12.json (JSON representation of the entity)
