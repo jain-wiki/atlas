@@ -39,7 +39,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed, watch, type Ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
+import type { Ref } from 'vue'
 import { useGeolocation } from '@vueuse/core'
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'

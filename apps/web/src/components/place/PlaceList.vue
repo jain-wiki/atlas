@@ -14,7 +14,8 @@
     <!-- Places Grid -->
     <div v-else>
       <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-4 tw:mb-6">
-        <PlaceCard v-for="place in places" :key="place.id" :place="place" @show-details="emit('show-details', place)" />
+        <PlaceCard v-for="place in places" :key="place.id" :place="place" @show-details="emit('show-details', place)"
+          @show-item="emit('show-item', place)" />
       </div>
 
       <!-- Pagination Controls -->
@@ -54,6 +55,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   'page-change': [page: number]
   'show-details': [place: Place]
+  'show-item': [place: Place]
 }>()
 
 function previousPage() {

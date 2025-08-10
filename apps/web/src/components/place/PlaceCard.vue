@@ -47,6 +47,7 @@
       <QChip :label="formatDate(place.createdAt)" icon="schedule" size="sm" color="grey-3" text-color="grey-7" />
       <span class="tw:text-xs tw:text-gray-500 tw:bg-gray-100"> {{ place.id }} </span>
       <QSpace />
+      <QBtn label="Item" color="primary" flat dense @click.stop="$emit('show-item')" />
       <QBtn label="Details" color="primary" flat dense @click.stop="$emit('show-details')" />
     </QCardActions>
   </QCard>
@@ -71,6 +72,7 @@ const props = defineProps<{
 
 defineEmits<{
   'show-details': []
+  'show-item': []
 }>()
 
 function formatDate(dateStr: string) {

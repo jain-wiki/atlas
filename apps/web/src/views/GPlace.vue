@@ -24,10 +24,11 @@
 
     <!-- Place List Component -->
     <PlaceList :places="places" :loading="loading" :pagination="pagination" @page-change="handlePageChange"
-      @show-details="showPlaceDetails" />
+      @show-details="showPlaceDetails" @show-item="showItemDialog" />
 
     <!-- Dialogs -->
     <PlaceDialog v-model:show="showDetails" :place="selectedPlace" @place-updated="handlePlaceUpdated" />
+    <ItemAdd v-model:show="showItem" :place="selectedPlace" @item-added="handlePlaceUpdated" />
     <GridMap v-model:show="showGridMap" @digipin-selected="handleDigipinSelected" />
   </QPage>
 </template>
@@ -40,11 +41,13 @@ import PlaceDialog from '@/components/place/PlaceDialog.vue'
 import GridMap from '@/components/place/GridMap.vue'
 import type { Pagination } from '@atlas/types/src/list'
 import type { Place } from '@atlas/types/src/gplace'
+import ItemAdd from '@/components/place/ItemAdd.vue'
 
 
 const loading = ref(false)
 const places = ref<Place[]>([])
 const showDetails = ref(false)
+const showItem = ref(false)
 const showGridMap = ref(false)
 const selectedPlace = ref<Place | null>(null)
 const searchForm = reactive({
@@ -119,6 +122,10 @@ function handlePageChange(page: number) {
 function showPlaceDetails(place: Place) {
   selectedPlace.value = place
   showDetails.value = true
+}
+function showItemDialog(place: Place) {
+  selectedPlace.value = place
+  showItem.value = true
 }
 
 function handlePlaceUpdated() {
