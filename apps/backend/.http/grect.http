@@ -1,0 +1,10 @@
+
+### Add Places to Rectangle
+POST {{baseurl}}/api/public/grect/saveplace
+
+{
+  "latitude": 19.076,
+  "longitude": 72.8777
+}
+
+
