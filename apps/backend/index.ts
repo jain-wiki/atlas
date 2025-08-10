@@ -1,6 +1,7 @@
 
 import { Hono } from 'hono';
 import { secureHeaders } from 'hono/secure-headers'
+import { cors } from 'hono/cors'
 
 import { auth } from './lib/auth';
 import { errorHandler } from './routes/middleware/errorhandler';
@@ -15,6 +16,11 @@ const app = new Hono<{
     session: Session | null;
   }
 }>();
+
+// Add cors for localhost:5003 when running in development mode
+if (process.env.NODE_ENV === 'development') {
+  app.use(cors({ origin: 'http://localhost:5003', credentials: true, }));
+}
 
 // Add security middleware
 app.use(secureHeaders())
