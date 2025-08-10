@@ -7,6 +7,7 @@ export const apiRoutes = new Hono();
 import { placeViewRoutes } from './placeview'; apiRoutes.route('/public/place', placeViewRoutes);
 import { gPlace } from './gplace'; apiRoutes.route('/public/gplace', gPlace);
 import { gRect } from './grect'; apiRoutes.route('/public/grect', gRect);
+import { wikiSave } from './wikisave'; apiRoutes.route('/public/wiki', wikiSave);
 
 // 2. Routes which are protected by authentication `/p/`
 // Note: '/p/' stands for protected routes.
