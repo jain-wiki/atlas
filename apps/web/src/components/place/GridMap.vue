@@ -118,7 +118,10 @@ const initializeMap = (): void => {
     const mumbaiCoords: [number, number] = [19.0760, 72.8777]
 
     // Initialize the map
-    map.value = L.map(mapContainer.value).setView(mumbaiCoords, 13)
+    map.value = L.map(mapContainer.value, {
+      minZoom: 10,
+      maxZoom: 13
+    }).setView(mumbaiCoords, 13)
 
     // Add OpenStreetMap tiles
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
