@@ -98,6 +98,12 @@ CREATE TABLE IF NOT EXISTS places_log (
 CREATE INDEX IF NOT EXISTS idx_places_log_place_id ON places_log(place_id);
 CREATE INDEX IF NOT EXISTS idx_places_log_createdAt ON places_log(createdAt);
 
+-- Create rect table to store digipin rectangles
+CREATE TABLE IF NOT EXISTS rect (
+    id TEXT PRIMARY KEY, -- Digipin5
+    updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
+) STRICT, WITHOUT ROWID;
+
 -- Create google maps places table
 CREATE TABLE IF NOT EXISTS gmaps_places (
     id TEXT PRIMARY KEY, -- cid extracted from googleMapsUri
