@@ -13,14 +13,13 @@
 
     <!-- Places Grid -->
     <div v-else>
-      <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 lg:tw:grid-cols-3 tw:gap-6 tw:mb-6">
-        <QCard v-for="place in places" :key="place.id" class="tw:cursor-pointer hover:tw:shadow-lg tw:transition-shadow"
-          @click="openGoogleMaps(place)">
+      <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-6 tw:mb-6">
+        <QCard v-for="place in places" :key="place.id" class="hover:tw:shadow-lg tw:transition-shadow">
           <QCardSection>
             <div class="tw:flex tw:items-start tw:justify-between tw:mb-3">
-              <h3 class="tw:text-lg tw:font-semibold tw:text-grey-8 tw:line-clamp-2 tw:flex-1">
+              <span class="tw:text-lg tw:font-semibold tw:text-grey-8 tw:line-clamp-2 tw:flex-1">
                 {{ place.displayName }}
-              </h3>
+              </span>
               <QBtn icon="open_in_new" flat round dense color="primary" size="sm" @click.stop="openGoogleMaps(place)" />
             </div>
 
@@ -76,7 +75,7 @@
     </div>
 
     <!-- Place Details Dialog -->
-    <QDialog v-model="showDetails" :maximized="$q.screen.xs">
+    <QDialog v-model="showDetails">
       <QCard style="min-width: 500px; max-width: 800px">
         <QCardSection class="tw:bg-primary tw:text-white">
           <div class="tw:text-h6">{{ selectedPlace?.displayName }}</div>
@@ -124,29 +123,8 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { useQuasar } from 'quasar'
-
-const $q = useQuasar()
-
-interface Place {
-  id: string
-  rtree_id: number
-  displayName: string
-  administrativeArea: string
-  locality: string
-  pincode: string
-  digipin5: string
-  response: string
-  createdAt: string
-  classification: string | null
-}
-
-interface Pagination {
-  pageNo: number
-  pageLimit: number
-  totalPages: number
-  hasMore: boolean
-}
+import type { Place } from '@atlas/types/src/gplace'
+import type { Pagination } from '@atlas/types/src/list'
 
 interface PlaceData {
   formattedAddress?: string

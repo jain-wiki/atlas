@@ -5,9 +5,9 @@
       <QBreadcrumbsEl label="Google Maps Places" />
     </QBreadcrumbs>
     <!-- Search Form -->
-    <QCard class="tw:p-4 tw:mb-6">
+    <QCard class="tw:mb-2">
       <QCardSection>
-        <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 lg:tw:grid-cols-4 tw:gap-4 tw:mb-4">
+        <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-4 tw:gap-4 tw:mb-4">
           <QInput v-model="searchForm.digipin5" label="Digipin5" outlined dense clearable />
           <QInput v-model="searchForm.locality" label="Locality" outlined dense clearable />
           <QInput v-model="searchForm.administrativeArea" label="Administrative Area" outlined dense clearable />
@@ -31,19 +31,8 @@ import { useRouter } from 'vue-router'
 import { Ax } from '@/helper/axios'
 import PlaceList from '@/components/place/PlaceList.vue'
 import type { Pagination } from '@atlas/types/src/list'
+import type { Place } from '@atlas/types/src/gplace'
 
-interface Place {
-  id: string
-  rtree_id: number
-  displayName: string
-  administrativeArea?: string
-  locality?: string
-  pincode?: string
-  digipin5: string
-  response: string
-  createdAt: string
-  classification?: string
-}
 
 const loading = ref(false)
 const places = ref<Place[]>([])
