@@ -57,3 +57,17 @@ export function getDigipinPrefix(latitude: number, longitude: number): string {
   return cleanDigiPin.substring(0, 5);
 }
 
+
+export function getUniqueDigiPinPrefixes(minLat: number, maxLat: number, minLon: number, maxLon: number, step = 0.01) {
+  const prefixSet = new Set();
+  for (let lat = minLat; lat <= maxLat; lat += step) {
+    for (let lon = minLon; lon <= maxLon; lon += step) {
+      const fullPin = getDigiPin(lat, lon);
+      if (fullPin) {
+        const prefix = fullPin.replace(/-/g, "").substring(0, 5);
+        prefixSet.add(prefix);
+      }
+    }
+  }
+  return Array.from(prefixSet) // Convert Set to Array and return
+}

@@ -17,6 +17,8 @@
     "axios": "catalog:",
     "better-auth": "catalog:",
     "dayjs": "catalog:",
+    "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
     "nanoid": "catalog:",
     "papaparse": "5.5.3",
     "pinia": "3.0.3",

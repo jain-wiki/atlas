@@ -25,8 +25,9 @@
     <PlaceList :places="places" :loading="loading" :pagination="pagination" @page-change="handlePageChange"
       @show-details="showPlaceDetails" />
 
-    <!-- Place Details Dialog -->
+    <!-- Dialogs -->
     <PlaceDialog v-model:show="showDetails" :place="selectedPlace" @place-updated="handlePlaceUpdated" />
+    <GridMap />
   </QPage>
 </template>
 
@@ -35,6 +36,7 @@ import { onMounted, ref, reactive } from 'vue'
 import { Ax } from '@/helper/axios'
 import PlaceList from '@/components/place/PlaceList.vue'
 import PlaceDialog from '@/components/place/PlaceDialog.vue'
+import GridMap from '@/components/place/GridMap.vue'
 import type { Pagination } from '@atlas/types/src/list'
 import type { Place } from '@atlas/types/src/gplace'
 
