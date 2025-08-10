@@ -29,9 +29,21 @@ You will need to install Bun to run the project. Follow the instructions on the 
 
 ## SPARQL Queries
 When using SPARQL queries, use the following prefixes:
-```
+```sql
 PREFIX yq: <https://data.jain.wiki/entity/>
 PREFIX yp: <https://data.jain.wiki/prop/direct/>
 
+```
+
+Get List of last modified items
+```sql
+SELECT ?item ?itemLabel ?modified WHERE {
+  ?item schema:dateModified ?modified.
+  BIND(NOW() - ?modified AS ?date_range)
+  FILTER(?date_range <= 30)  # Items modified in the last day (adjust to <=7 for a week, etc.)
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+}
+ORDER BY DESC(?modified)
+LIMIT 100
 ```
 
