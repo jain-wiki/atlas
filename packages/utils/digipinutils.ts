@@ -52,7 +52,8 @@ export function getBoundingBoxFromDigiPINPrefix(prefix: string): {
 export function getDigipinPrefix(latitude: number, longitude: number): string {
   const fullDigiPin = getDigiPin(latitude, longitude);
   // Remove "-" from the full DigiPin
-  fullDigiPin.replace(/-/g, '');
+  const cleanDigiPin = fullDigiPin.replaceAll('-', '');
   // Return the first 5 characters as the prefix
-  return fullDigiPin.substring(0, 5);
+  return cleanDigiPin.substring(0, 5);
 }
+
