@@ -58,8 +58,8 @@ export function getDigipinPrefix(latitude: number, longitude: number): string {
 }
 
 
-export function getUniqueDigiPinPrefixes(minLat: number, maxLat: number, minLon: number, maxLon: number, step = 0.01) {
-  const prefixSet = new Set();
+export function getUniqueDigiPinPrefixes(minLat: number, maxLat: number, minLon: number, maxLon: number, step = 0.01): string[] {
+  const prefixSet = new Set<string>();
   for (let lat = minLat; lat <= maxLat; lat += step) {
     for (let lon = minLon; lon <= maxLon; lon += step) {
       const fullPin = getDigiPin(lat, lon);
