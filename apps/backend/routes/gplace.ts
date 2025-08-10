@@ -12,7 +12,13 @@ gPlace.get('/list',
       digipin5: z.string().optional(),
       locality: z.string().optional(),
       administrativeArea: z.string().optional(),
-      classification: z.string().optional(),
+      classification: z.enum([
+        'pending', // Null filter
+        'accepted', // Accepted
+        'T', // Temple
+        'C', // Community
+        'R', // Rejected
+      ]).optional(),
       // Pagination
       pageNo: z.coerce.number().max(100).min(1).default(1),
       pageLimit: z.coerce.number().max(1000).min(1).default(20),
@@ -39,8 +45,20 @@ gPlace.get('/list',
       params.administrativeArea = administrativeArea;
     }
     if (classification) {
-      sql += ' AND classification = $classification';
-      params.classification = classification;
+      switch (classification) {
+        case 'pending':
+          sql += ` AND classification IS NULL`;
+          break;
+
+        case 'accepted':
+          sql += ` AND (classification IS NOT NULL OR classification != 'R')`;
+          break;
+
+        default:
+          sql += ' AND classification = $classification';
+          params.classification = classification;
+          break;
+      }
     }
 
     sql += ' LIMIT $limit OFFSET $offset';

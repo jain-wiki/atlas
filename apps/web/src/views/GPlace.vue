@@ -5,13 +5,14 @@
       <QBreadcrumbsEl label="Google Maps Places" />
     </QBreadcrumbs>
     <!-- Search Form -->
-    <QCard class="tw:mb-2">
+    <QCard class="tw:mb-4" flat bordered>
       <QCardSection>
         <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-4 tw:gap-4 tw:mb-4">
-          <QInput v-model="searchForm.digipin5" label="Digipin5" outlined dense clearable />
+          <QSelect v-model="searchForm.classification" label="Classification" outlined dense clearable
+            :options="classificationOptions" option-value="value" option-label="label" emit-value map-options />
           <QInput v-model="searchForm.locality" label="Locality" outlined dense clearable />
           <QInput v-model="searchForm.administrativeArea" label="Administrative Area" outlined dense clearable />
-          <QInput v-model="searchForm.classification" label="Classification" outlined dense clearable />
+          <QInput v-model="searchForm.digipin5" label="Digipin5" outlined dense clearable />
         </div>
         <div class="tw:flex tw:gap-2">
           <QBtn @click="searchPlaces" color="primary" :loading="loading" label="Search" />
@@ -40,8 +41,16 @@ const searchForm = reactive({
   digipin5: '',
   locality: '',
   administrativeArea: '',
-  classification: ''
+  classification: 'pending'
 })
+
+const classificationOptions = [
+  { label: 'Pending', value: 'pending' },
+  { label: 'Accepted', value: 'accepted' },
+  { label: 'Temple', value: 'T' },
+  { label: 'Community', value: 'C' },
+  { label: 'Rejected', value: 'R' }
+]
 
 const pagination = reactive<Pagination>({
   pageNo: 1,
