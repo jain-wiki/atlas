@@ -16,12 +16,22 @@ export const gRect = new Hono()
 gRect.post('/saveplace',
   zValidator('json',
     z.object({
-      latitude: z.number().min(-90).max(90),
-      longitude: z.number().min(-180).max(180),
+      latitude: z.number().min(-90).max(90).optional(),
+      longitude: z.number().min(-180).max(180).optional(),
+      digipin5: z.string().length(5).uppercase().optional()
     })),
   async (c) => {
-    const { latitude, longitude } = c.req.valid('json');
-    const digipin5 = getDigipinPrefix(latitude, longitude);
+    const { latitude, longitude, digipin5: digipin5Input } = c.req.valid('json');
+
+    let digipin5;
+    if (latitude && longitude) {
+      digipin5 = getDigipinPrefix(latitude, longitude);
+    } else {
+      digipin5 = digipin5Input;
+    }
+    if (!digipin5) {
+      throw new Error("Either digipin5 or both latitude and longitude must be provided");
+    }
 
     const { maxLat, maxLng, minLat, minLng } = getBoundingBoxFromDigiPINPrefix(digipin5);
 
