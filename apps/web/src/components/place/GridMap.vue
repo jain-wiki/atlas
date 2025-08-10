@@ -10,12 +10,20 @@
       </QBar>
 
       <QCardSection class="tw:flex-shrink-0">
-        <span class="grid-info" v-if="gridRectangles.length > 0">
-          {{ gridRectangles.length }} grid cells displayed
-        </span>
-        <span v-if="map">
-          The Zoom level is {{ map.getZoom() }}
-        </span>
+        <div class="tw:flex tw:items-center tw:justify-between tw:gap-4">
+          <div class="tw:flex tw:flex-col tw:gap-1">
+            <span class="grid-info" v-if="gridRectangles.length > 0">
+              {{ gridRectangles.length }} grid cells displayed
+            </span>
+            <span v-if="map">
+              The Zoom level is {{ map.getZoom() }}
+            </span>
+          </div>
+          <QBtn color="primary" icon="my_location" label="Current Location" @click="setCurrentLocation"
+            :loading="isLocationLoading" :disable="locationError !== null">
+            <QTooltip v-if="locationError">{{ locationError }}</QTooltip>
+          </QBtn>
+        </div>
       </QCardSection>
 
       <div class="tw:flex-1 tw:relative">
@@ -26,7 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, type Ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, type Ref } from 'vue'
+import { useGeolocation } from '@vueuse/core'
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { getUniqueDigiPinPrefixes, getBoundingBoxFromDigiPINPrefix } from '@atlas/utils/digipinutils'
@@ -35,6 +44,70 @@ const show = ref(true)
 const mapContainer: Ref<HTMLElement | null> = ref(null)
 const map: Ref<L.Map | null> = ref(null)
 const gridRectangles: Ref<L.Rectangle[]> = ref([])
+const currentLocationMarker: Ref<L.Marker | null> = ref(null)
+
+// Geolocation setup
+const { coords, locatedAt, error, resume, pause } = useGeolocation()
+
+// Computed properties for location state
+const isLocationLoading = computed(() => {
+  // Show loading if we don't have coordinates yet and there's no error
+  return coords.value.latitude === null && coords.value.longitude === null && error.value === null
+})
+
+const locationError = computed(() => {
+  return error.value
+})
+
+/**
+ * Set the map center to user's current location
+ */
+const setCurrentLocation = (): void => {
+  try {
+    if (!map.value) {
+      console.warn('Map not initialized')
+      return
+    }
+
+    if (error.value) {
+      console.error('Geolocation error:', error.value)
+      return
+    }
+
+    if (coords.value.latitude !== null && coords.value.longitude !== null) {
+      const currentLocation: [number, number] = [coords.value.latitude, coords.value.longitude]
+
+      // Remove existing location marker if any
+      if (currentLocationMarker.value) {
+        map.value.removeLayer(currentLocationMarker.value)
+      }
+
+      // Set map view to current location
+      map.value.setView(currentLocation, 13)
+
+      // Add a marker at current location
+      currentLocationMarker.value = L.marker(currentLocation, {
+        icon: L.divIcon({
+          className: 'current-location-marker',
+          html: '<div style="background-color: #007cff; width: 12px; height: 12px; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 6px rgba(0,124,255,0.6);"></div>',
+          iconSize: [16, 16],
+          iconAnchor: [8, 8]
+        })
+      })
+        .addTo(map.value)
+        .bindPopup('Your current location')
+        .openPopup()
+
+      console.log('Map centered to current location:', currentLocation)
+    } else {
+      console.warn('Location coordinates not available yet')
+      // Resume geolocation to get fresh coordinates
+      resume()
+    }
+  } catch (err) {
+    console.error('Error setting current location:', err)
+  }
+}
 
 /**
  * Generate and display DigiPin grid on the map
@@ -150,5 +223,9 @@ onBeforeUnmount(() => {
     map.value = null
   }
   gridRectangles.value = []
+  currentLocationMarker.value = null
+
+  // Pause geolocation to save battery
+  pause()
 })
 </script>
