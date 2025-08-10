@@ -26,7 +26,7 @@ const mapsFieldMask = [
 
 
 
-async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction) {
+export async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction) {
   let allPlaces: Place[] = [];
   let currentPageToken = undefined as string | undefined;
   let currentPageCount = 1;
