@@ -15,5 +15,14 @@
         "<node_internals>/**"
       ]
     },
+    {
+      "type": "bun",
+      "request": "launch",
+      "name": "bun:backend",
+      "program": "${workspaceFolder}/apps/backend/index.ts",
+      "cwd": "${workspaceFolder}/apps/backend",
+      "watchMode": true,
+      "runtime": "bun"
+    }
   ]
 }
