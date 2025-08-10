@@ -30,8 +30,8 @@ You will need to install Bun to run the project. Follow the instructions on the 
 ## SPARQL Queries
 When using SPARQL queries, use the following prefixes:
 ```
-PREFIX wd: <http://data.jain.wiki/entity/>
-PREFIX wdt: <http://data.jain.wiki/prop/direct/>
+PREFIX yq: <https://data.jain.wiki/entity/>
+PREFIX yp: <https://data.jain.wiki/prop/direct/>
 
 ```
 
