@@ -27,7 +27,7 @@
 
     <!-- Dialogs -->
     <PlaceDialog v-model:show="showDetails" :place="selectedPlace" @place-updated="handlePlaceUpdated" />
-    <GridMap />
+    <GridMap @digipin-selected="handleDigipinSelected" />
   </QPage>
 </template>
 
@@ -122,6 +122,11 @@ function showPlaceDetails(place: Place) {
 function handlePlaceUpdated() {
   showDetails.value = false
   getPlaces() // Refresh the data after successful update
+}
+
+function handleDigipinSelected(digipin5: string) {
+  searchForm.digipin5 = digipin5
+  searchPlaces() // This will reset pageNo to 1 and call getPlaces()
 }
 
 onMounted(() => {

@@ -26,7 +26,8 @@
         <div class="tw:flex tw:items-center tw:gap-4">
           <QInput v-model="selectedDigiPin" label="Selected DigiPin" outlined readonly class="tw:flex-1"
             placeholder="Click on a grid cell to select" />
-          <QBtn color="primary" label="Fetch Places" icon="place" :disable="!selectedDigiPin" @click="fetchPlaces" />
+          <QBtn color="primary" label="Fetch Places" icon="place" :disable="!selectedDigiPin"
+            :loading="isFetchingPlaces" @click="fetchPlaces" />
         </div>
       </QCardSection>
 
@@ -43,6 +44,12 @@ import { useGeolocation } from '@vueuse/core'
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { getUniqueDigiPinPrefixes, getBoundingBoxFromDigiPINPrefix } from '@atlas/utils/digipinutils'
+import { Ax } from '@/helper/axios'
+
+// Define emits
+const emit = defineEmits<{
+  'digipin-selected': [digipin5: string]
+}>()
 
 const show = ref(true)
 const mapContainer: Ref<HTMLElement | null> = ref(null)
@@ -50,6 +57,7 @@ const map: Ref<L.Map | null> = ref(null)
 const gridRectangles: Ref<L.Rectangle[]> = ref([])
 const currentLocationMarker: Ref<L.Marker | null> = ref(null)
 const selectedDigiPin = ref('')
+const isFetchingPlaces = ref(false)
 
 // Geolocation setup
 const { coords, error: locationError, resume, pause } = useGeolocation()
@@ -63,18 +71,27 @@ const isLocationLoading = computed(() => {
 /**
  * Fetch places for the selected DigiPin
  */
-const fetchPlaces = (): void => {
+const fetchPlaces = async (): Promise<void> => {
   if (!selectedDigiPin.value) {
     console.warn('No DigiPin selected')
     return
   }
 
-  // TODO: Implement API call to fetch places for the selected DigiPin
-  console.log('Fetching places for DigiPin:', selectedDigiPin.value)
+  isFetchingPlaces.value = true
 
-  // You can implement the actual API call here
-  // Example:
-  // const places = await fetchPlacesFromAPI(selectedDigiPin.value)
+  try {
+    const response = await Ax.post('/public/grect/saveplace', {
+      digipin5: selectedDigiPin.value
+    })
+    if (response.data?.success) {
+      // API call was successful, emit the digipin5 to parent
+      emit('digipin-selected', selectedDigiPin.value)
+      show.value = false // Close the dialog
+    }
+  } catch (error) {
+    console.error('Error fetching places:', error)
+  }
+  isFetchingPlaces.value = false
 }
 
 
