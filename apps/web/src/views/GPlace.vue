@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
 import { onMounted, ref, reactive } from 'vue'
-import { useRouter } from 'vue-router'
 import { Ax } from '@/helper/axios'
 import PlaceList from '@/components/place/PlaceList.vue'
 import PlaceDialog from '@/components/place/PlaceDialog.vue'
@@ -103,7 +102,7 @@ function clearForm() {
   searchForm.digipin5 = ''
   searchForm.locality = ''
   searchForm.administrativeArea = ''
-  searchForm.classification = ''
+  searchForm.classification = 'pending'
   pagination.pageNo = 1
   getPlaces()
 }
