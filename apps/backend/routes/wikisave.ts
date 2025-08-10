@@ -23,7 +23,7 @@ const sectItems = {
 
 
 const updateMapsPlacesStatement = db.prepare(`
-  UPDATE gmaps_places SET item = $itemId WHERE id = $placeCid LIMIT 1;`)
+  UPDATE gmaps_places SET item = $itemId WHERE id = $placeCid;`)
 
 // Create a new item
 wikiSave.post('/item',
@@ -58,9 +58,7 @@ wikiSave.post('/item',
     if (googleMapsPlaceId) { claims['P25'] = googleMapsPlaceId }
 
     const cid = getCidFromGoogleMapsUri(googleMapsUri);
-    if (!cid) {
-      throw new Error('Failed to extract CID from Google Maps URI');
-    }
+    if (!cid) { throw new Error('Failed to extract CID from Google Maps URI'); }
     if (googleMapsUri) { claims['P5'] = `https://www.google.com/maps?cid=${cid}` }
 
     const itemId = await createWikiItem(label, description, claims);
