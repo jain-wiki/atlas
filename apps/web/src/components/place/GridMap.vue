@@ -23,6 +23,9 @@
             :loading="isLocationLoading" :disable="locationError !== null">
             <QTooltip v-if="locationError">{{ locationError }}</QTooltip>
           </QBtn>
+          <div v-if="locationError">
+            {{ locationError }}
+          </div>
         </div>
       </QCardSection>
 
@@ -47,17 +50,14 @@ const gridRectangles: Ref<L.Rectangle[]> = ref([])
 const currentLocationMarker: Ref<L.Marker | null> = ref(null)
 
 // Geolocation setup
-const { coords, locatedAt, error, resume, pause } = useGeolocation()
+const { coords, error: locationError, resume, pause } = useGeolocation()
 
 // Computed properties for location state
 const isLocationLoading = computed(() => {
   // Show loading if we don't have coordinates yet and there's no error
-  return coords.value.latitude === null && coords.value.longitude === null && error.value === null
+  return coords.value.latitude === null && coords.value.longitude === null && locationError.value === null
 })
 
-const locationError = computed(() => {
-  return error.value
-})
 
 /**
  * Set the map center to user's current location
@@ -65,13 +65,10 @@ const locationError = computed(() => {
 const setCurrentLocation = (): void => {
   try {
     if (!map.value) {
-      console.warn('Map not initialized')
-      return
+      console.warn('Map not initialized'); return;
     }
-
-    if (error.value) {
-      console.error('Geolocation error:', error.value)
-      return
+    if (locationError.value) {
+      console.error('Geolocation error:', locationError.value); return;
     }
 
     if (coords.value.latitude !== null && coords.value.longitude !== null) {
@@ -98,7 +95,8 @@ const setCurrentLocation = (): void => {
         .bindPopup('Your current location')
         .openPopup()
 
-      console.log('Map centered to current location:', currentLocation)
+      pause() // Pause geolocation tracking to save battery
+
     } else {
       console.warn('Location coordinates not available yet')
       // Resume geolocation to get fresh coordinates
@@ -129,11 +127,8 @@ const generateDigiPinGrid = (): void => {
     const minLon = bounds.getWest()
     const maxLon = bounds.getEast()
 
-    console.log('Map bounds:', { minLat, maxLat, minLon, maxLon })
-
     // Get unique DigiPin prefixes for the current view
     const digiPinPrefixes = getUniqueDigiPinPrefixes(minLat, maxLat, minLon, maxLon, 0.01)
-    console.log(`Found ${digiPinPrefixes.length} DigiPin prefixes`)
 
     // Create rectangles for each DigiPin prefix
     digiPinPrefixes.forEach((prefix) => {
@@ -174,7 +169,6 @@ const generateDigiPinGrid = (): void => {
       }
     })
 
-    console.log(`Added ${gridRectangles.value.length} grid rectangles to map`)
   } catch (error) {
     console.error('Error generating DigiPin grid:', error)
   }
