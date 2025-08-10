@@ -1,0 +1,1539 @@
+[
+  {
+    "id": "ChIJLWDiUdvO5zsRh85oliYmL3k",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2R9R+H3Q, opposite Kabutar Khana, Omkar Society, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "location": {
+      "latitude": 19.018951899999998,
+      "longitude": 72.8402468
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=8732240149668744839&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Shantinath Bhagwan Shwetambar Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2R9R+H3Q",
+        "opposite Kabutar Khana",
+        "Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJu4tdN_fO5zsRkb20lDpRBks",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "142, Doctor SS Rao Road, Wadia Baug, Parel East, Parel, Ganesh Gully, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JCJXRVQ+Q5",
+      "compoundCode": "XRVQ+Q5 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9944113,
+      "longitude": 72.83797679999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=5406097714749685137&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Suvidhinath Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "142",
+        "Doctor SS Rao Road",
+        "Wadia Baug, Parel East, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJqXE7AI7O5zsRqU7pVPUk7s4",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "XRXC+PQ3, Shivram Seth Amritwar Marg, Opposite Shree Ram Mills, Lower Parel West, Worli, Mumbai, Maharashtra 400013, India",
+    "location": {
+      "latitude": 18.9992604,
+      "longitude": 72.82191530000001
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=14910896052380454569&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree 1008 Panchbalayati Digambar Jain Mandir, Nehru Nagar, Worli",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "XRXC+PQ3",
+        "Shivram Seth Amritwar Marg",
+        "Lower Parel West, Worli"
+      ]
+    }
+  },
+  {
+    "id": "ChIJmyqsiePO5zsRtsS3Vo9M1VQ",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2R4W+48M, G D Ambekar Rd, Bhoiwada, Parel, Mumbai, Maharashtra 400012, India",
+    "location": {
+      "latitude": 19.0053283,
+      "longitude": 72.8458064
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=6112876247744234678&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Shantinathji Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2R4W+48M",
+        "G D Ambekar Rd",
+        "Bhoiwada, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJH9RqX-vO5zsRFCluw-rg4s8",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2R4H+CM9, Pandurang Budhkar Marg, Opp Bombay Dyeing Gate No 2, Lower Parel, Mumbai, Maharashtra 400013, India",
+    "location": {
+      "latitude": 19.0060335,
+      "longitude": 72.8292402
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=14979782609493436692&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Simandhar Swami Jain Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2R4H+CM9",
+        "Pandurang Budhkar Marg",
+        "Opp Bombay Dyeing Gate No 2",
+        "Lower Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJbyBHRgDP5zsRu0aknOX6Cb8",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Shree shantinathji Jinalaya, Jerbai Wadia Rd, Bhoiwada, Parel, Mumbai, Maharashtra 400015, India",
+    "plusCode": {
+      "globalCode": "7JFJ2V42+68",
+      "compoundCode": "2V42+68 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0055349,
+      "longitude": 72.8508652
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=13765809600117098171&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Shantinathji Jinalay, Ruparel Ariana",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400015",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Shree shantinathji Jinalaya",
+        "Jerbai Wadia Rd",
+        "Bhoiwada, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ4bm0H8XO5zsRLjPGLZC0Ja4",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "6, Gyan Mandir Road, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "plusCode": {
+      "globalCode": "7JFJ2RCQ+97",
+      "compoundCode": "2RCQ+97 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0209764,
+      "longitude": 72.83822959999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=12548634468074009390&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Aatma Kamal Labdhi Surishwarji Jain Gyan Mandir Trust",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "6, Gyan Mandir Road",
+        "Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJt60Uku_O5zsRxWJYHCfSegQ",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "119-21, Dr Babasaheb Ambedkar Marg, Parel East, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R3Q+3H",
+      "compoundCode": "2R3Q+3H Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0026737,
+      "longitude": 72.8389649
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=322801388731523781&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Vardhaman Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "119-21, Dr Babasaheb Ambedkar Marg",
+        "Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ5Yi5IsXO5zsRqH9Ym-17FBk",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Aloka Building,, 2RCQ+996, Gyan Mandir Road, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "location": {
+      "latitude": 19.0209196,
+      "longitude": 72.8383802
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=1807205610926145448&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Jain Upashraya",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2RCQ+996",
+        "Aloka Building,",
+        "Gyan Mandir Road",
+        "Dadar West"
+      ]
+    }
+  },
+  {
+    "id": "ChIJBfa42AfP5zsRq7OaUwR5uJ8",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2RCP+C36, Chandrakant Dhuru Wadi, Dadar, Mumbai, Maharashtra 400028, India",
+    "location": {
+      "latitude": 19.021046899999998,
+      "longitude": 72.8351407
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=11509081907234780075&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Digamber jain mandir prabhadevi",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2RCP+C36",
+        "Chandrakant Dhuru Wadi, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJXcOMF-_O5zsRJsuYum55jBg",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Shatrunjay Tower, Vitthal Chavan Marg, Krishna Nagar, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R4Q+32",
+      "compoundCode": "2R4Q+32 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0052147,
+      "longitude": 72.8375681
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=1768922270133701414&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Aadeshwar Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Shatrunjay Tower",
+        "Vitthal Chavan Marg",
+        "Krishna Nagar, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJZTDrj1jO5zsR6y1VuRV1bNw",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Dattaram Lad Road, Kalachowki Naka, Shree Digvijay Mill Chawl No. 3, Ground Floor, Dr Babasaheb Ambedkar Marg, Ghodapdeo, Byculla East, Byculla, Mumbai, Maharashtra 400033, India",
+    "plusCode": {
+      "globalCode": "7JCJXRQP+8C",
+      "compoundCode": "XRQP+8C Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9883487,
+      "longitude": 72.8361208
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=15883198721993027051&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Munisuvrat Swami Jain Derasar - Shree Porwal Jain Sangh",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400033",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Dattaram Lad Road, Kalachowki Naka, Shree Digvijay Mill Chawl No. 3, Ground Floor",
+        "Dr Babasaheb Ambedkar Marg",
+        "Ghodapdeo, Byculla East, Byculla"
+      ]
+    }
+  },
+  {
+    "id": "ChIJpXAwd97P5zsRWWueebfbICw",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Vardhman Estate, Lal Baug, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JCJXRRQ+HJ",
+      "compoundCode": "XRRQ+HJ Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9914478,
+      "longitude": 72.8390678
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=3179782917989493593&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Vardhman estate Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Vardhman Estate",
+        "Lal Baug, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJL13XNefO5zsRFv-rMvyZ6-M",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Dadar East, Lokprakash Bhavan, Radhika Saikripa Co-op Society, Naigaon, Dadar, Mumbai, Maharashtra 400014, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R6W+G3",
+      "compoundCode": "2R6W+G3 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.011258899999998,
+      "longitude": 72.845143
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=16423389774597586710&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Vasupujyaswami Jain Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400014",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Lokprakash Bhavan",
+        "Dadar East",
+        "Naigaon"
+      ]
+    }
+  },
+  {
+    "id": "ChIJLfWgjh3P5zsRLiIhvicEFi8",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "CS 120,GD Ambekar Marg, Naigaon, Dadar East, Wadala, Mumbai, Maharashtra 400014, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R6X+28",
+      "compoundCode": "2R6X+28 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0100832,
+      "longitude": 72.8482902
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=3392903938010325550&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Shankeshwar Parshwanath Jain Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400014",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "CS 120,GD Ambekar Marg, Naigaon",
+        "Dadar East"
+      ]
+    }
+  },
+  {
+    "id": "ChIJcSyhplDP5zsR82mtWL550C0",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Lower Parel, Mumbai, Maharashtra 400013, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R3G+FJ",
+      "compoundCode": "2R3G+FJ Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0037166,
+      "longitude": 72.82661399999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=3301272385301080563&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Akshat Sayyam Jain ,Lodha World Towers Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Lower Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJf3W7V57P5zsRiorbSIdOnwo",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "XRVP+X5X, Mahadev Palav Marg, near ITC Grand Central, Lower Parel East, Parel, Mumbai, Maharashtra 400012, India",
+    "location": {
+      "latitude": 18.9949768,
+      "longitude": 72.83546969999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=765416804626172554&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Munisuvrat Swami Jain Temple, Avighna Estate",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "XRVP+X5X",
+        "Mahadev Palav Marg",
+        "near ITC Grand Central",
+        "Lower Parel East"
+      ]
+    }
+  },
+  {
+    "id": "ChIJIcW5AljO5zsRQ7ksExfjvBk",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "22, Dattaram Lad Marg, Ghodapdeo, Lal Baug, Parel, Mumbai, Maharashtra 400033, India",
+    "plusCode": {
+      "globalCode": "7JCJXRQQ+GV",
+      "compoundCode": "XRQQ+GV Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9888574,
+      "longitude": 72.8396589
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=1854606834815252803&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Jain Temple Of Muthaliya Residency",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400033",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "22, Dattaram Lad Marg",
+        "Ghodapdeo, Lal Baug, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJwzXp5O_O5zsRVCEI6_IEe78",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2R2Q+GHV, Dr Babasaheb Ambedkar Marg, Parel East, Parel, Mumbai, Maharashtra 400012, India",
+    "location": {
+      "latitude": 19.0013711,
+      "longitude": 72.8389171
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=13797627324751421780&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Adishwar Shwetamber Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2R2Q+GHV",
+        "Dr Babasaheb Ambedkar Marg",
+        "Parel East"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ9zA3RunO5zsRK6DefZF6lIM",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "1st Floor, Jain Boarding, opp. Elphinston Rd, Station (W, Mumbai, Maharashtra 400013, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R5P+C8",
+      "compoundCode": "2R5P+C8 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0085174,
+      "longitude": 72.83575929999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=9481337880822325291&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Godiji Parshvnath Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "1st Floor, Jain Boarding",
+        "opp. Elphinston Rd",
+        "Station (W"
+      ]
+    }
+  },
+  {
+    "id": "ChIJi550znDP5zsRzllhhy-UqOI",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "135, DSP Rd, Gautam Nagar, Dadar, Mumbai, Maharashtra 400014, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R6R+WW",
+      "compoundCode": "2R6R+WW Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.012282,
+      "longitude": 72.842339
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=16332466980514781646&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Sheetalnathji Acalgach Jain Sangh",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400014",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "135, DSP Rd",
+        "Gautam Nagar, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJCSWNLNvO5zsR1cCmeJLpmGM",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2RCQ+6XR, Near Kabutar khana, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "location": {
+      "latitude": 19.020623999999998,
+      "longitude": 72.8398903
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=7176742821513576661&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Shantinath Jain Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2RCQ+6XR",
+        "Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJUXbh-fDP5zsR1eo8CEizvoA",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Curry Road Station, XRWP+HWJ, MP Marg, Parel East, Parel, Mumbai, Maharashtra 400012, India",
+    "location": {
+      "latitude": 18.9965051,
+      "longitude": 72.8373079
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=9277049404387027669&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Vasupujya Swami Jain Temple, Ashok Towers",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "XRWP+HWJ",
+        "Curry Road Station",
+        "MP Marg",
+        "Parel East, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJX36OE9zO5zsRfHu3n5loa5E",
+    "types": [
+      "hindu_temple",
+      "tourist_attraction",
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Swaminarayan Chowk, Central Railway, opp. Dadar Railway Station, Dadar East, Dadar, Mumbai, Maharashtra 400014, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R9V+3P",
+      "compoundCode": "2R9V+3P Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.017725499999997,
+      "longitude": 72.8443667
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=10478583967026477948&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "BAPS Shri Swaminarayan Mandir, Mumbai",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400014",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Swaminarayan Chowk",
+        "Central Railway",
+        "opp. Dadar Railway Station"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ_Zr-3sTO5zsRfdONaJtPiHw",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "12, Gyan Mandir Road, Near Kabutar khana, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "plusCode": {
+      "globalCode": "7JFJ2RCQ+58",
+      "compoundCode": "2RCQ+58 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0204842,
+      "longitude": 72.8383617
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=8973509786428363645&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Vardhman Jain Gruh Udyog",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "12, Gyan Mandir Road",
+        "Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJr3j9SOvO5zsRUJtxe0yrA84",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Globe Apartment No. 10, Ground Floor, Behind Deepak Talkies, Kamagar Nagar Number 1, Century Mills, Off, Pandurang Budhkar Marg, Lower Parel, Mumbai, Maharashtra 400013, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R4J+F3",
+      "compoundCode": "2R4J+F3 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0061563,
+      "longitude": 72.8301511
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=14844897141720193872&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shankheshwar Parshvnath Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Globe Apartment No. 10, Ground Floor, Behind Deepak Talkies, Kamagar Nagar Number 1, Century Mills",
+        "Off, Pandurang Budhkar Marg",
+        "Lower Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJR16IBsjP5zsRO2w3kEd8PiY",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "XRRQ+MH7, Lal Baug, Parel, Mumbai, Maharashtra 400012, India",
+    "location": {
+      "latitude": 18.9916727,
+      "longitude": 72.8389293
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=2755776668801395771&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Kamal Kunj Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "XRRQ+MH7",
+        "Lal Baug, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJc5KekgHP5zsRl3h0_GDJgvU",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Gyan Mandir Building, Gyan Mandir Road, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "plusCode": {
+      "globalCode": "7JFJ2RCQ+98",
+      "compoundCode": "2RCQ+98 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.020943,
+      "longitude": 72.8383008
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=17690923704654264471&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shitalnath Derasar Jain Temple",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Gyan Mandir Building",
+        "Gyan Mandir Road",
+        "Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJb0CBH1HP5zsRSa8qxIXNiMM",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3rd floor, Daya Niwas, B wing, SK Bole Rd, Chandrakant Dhuru Wadi, Dadar, W, Mumbai, Maharashtra 400028, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R9M+9W",
+      "compoundCode": "2R9M+9W Dadar, Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0184356,
+      "longitude": 72.83483319999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=14089737408634072905&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shankheshwar Parshvanath Jain Temple (Daya Niwas)",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "locality": "W",
+      "addressLines": [
+        "3rd floor, Daya Niwas",
+        "B wing, SK Bole Rd",
+        "Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJUx57T-_P5zsRLbgirY43or0",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Anupam Apartment, Dattaram Khamkar Marg, Chinchpokli East, Gundecha Garden, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JCJXRRM+JC",
+      "compoundCode": "XRRM+JC Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.991615499999998,
+      "longitude": 72.83358199999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=13664545305325123629&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "SHRI VASUPUJYA SWAMI BHAGWAN JAIN TEMPLE",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Anupam Apartment",
+        "Dattaram Khamkar Marg",
+        "Chinchpokli East, Gundecha Garden, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ272wPzjP5zsRQyqU9IgdKRQ",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2RCP+RV2, Sakharam Keer Rd, Chandrakant Dhuru Wadi, Dadar, Mumbai, Maharashtra 400028, India",
+    "location": {
+      "latitude": 19.0220233,
+      "longitude": 72.8371361
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=1452724828859804227&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "New Aaradhana Bhavan (Jain Derasar)",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2RCP+RV2",
+        "Sakharam Keer Rd",
+        "Chandrakant Dhuru Wadi, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJey8Qy-vO5zsRZWT_Ys-miio",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "2R5M+G2W, Parel Bus Depot, Dighe Nagar, Parel, Mumbai, Maharashtra 400025, India",
+    "location": {
+      "latitude": 19.008867199999997,
+      "longitude": 72.8325736
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=3065445906028389477&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Terapanth Bhavan Elpinstone",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400025",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "2R5M+G2W",
+        "Parel Bus Depot, Dighe Nagar, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ78VyPPfO5zsRM72wioGm-AU",
+    "types": [
+      "candy_store",
+      "confectionery",
+      "point_of_interest",
+      "food_store",
+      "food",
+      "store",
+      "establishment"
+    ],
+    "formattedAddress": "Shop Number 1/196 Eshwar Niwas, Dr SS Rao Marg, near Suvidhi Nath Jain Mandir, Ganesh Gully, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JCJXRVP+9W",
+      "compoundCode": "XRVP+9W Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9934631,
+      "longitude": 72.8373699
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=430276839721712947&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Akshay Jain Sweet",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Shop Number 1/196 Eshwar Niwas",
+        "Dr SS Rao Marg",
+        "near Suvidhi Nath Jain Mandir"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ4UMGbcPO5zsRBuahJZAITUQ",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Mehta Apartment, Wing 'C', 1st Floor, Room No. 30, Bhavani Shanker Cross Rd, Anmol Co-Operative Housing Society, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R8Q+P3",
+      "compoundCode": "2R8Q+P3 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0168413,
+      "longitude": 72.8376284
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=4921599382985500166&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shree Giya Parshvnath Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Mehta Apartment, Wing 'C', 1st Floor, Room No. 30, Bhavani Shanker Cross Rd",
+        "Anmol Co-Operative Housing Society, Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJEULIs_nO5zsRgr6l1fKJAnU",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "GD Ambedkar Marg Parel Tank Road Kalachowki AmbeWadi,, XRVR+4MX, near Tata Power House, Wadia Baug, Lal Baug, Parel, Mumbai, Maharashtra 400033, India",
+    "location": {
+      "latitude": 18.9928571,
+      "longitude": 72.8417375
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=8431453128450489986&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Bhagwan Parshwanath Jain Mandir",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400033",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "XRVR+4MX",
+        "GD Ambedkar Marg Parel Tank Road Kalachowki AmbeWadi,",
+        "near Tata Power House"
+      ]
+    }
+  },
+  {
+    "id": "ChIJa3VMoMDO5zsRpwSEo1Zpqrg",
+    "types": [
+      "furniture_store",
+      "home_improvement_store",
+      "home_goods_store",
+      "point_of_interest",
+      "store",
+      "establishment"
+    ],
+    "formattedAddress": "Unit 4, Raghuvanshi Mills, 2nd Floor, above Good Earth, Bldg, 11/12, Senapati Bapat Marg, above Good Earth, Gandhi Nagar, Upper Worli, Worli, Mumbai, Maharashtra 400018, India",
+    "plusCode": {
+      "globalCode": "7JCJXRVF+67",
+      "compoundCode": "XRVF+67 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9930771,
+      "longitude": 72.8231711
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=13306563869850993831&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Aakaar - Idols & Temples",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400018",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Unit 4, Raghuvanshi Mills, 2nd Floor, above Good Earth, Bldg",
+        "11/12, Senapati Bapat Marg",
+        "above Good Earth"
+      ]
+    }
+  },
+  {
+    "id": "ChIJkzs99DvP5zsRpyNNxLneNJU",
+    "types": [
+      "condominium_complex",
+      "apartment_complex",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Pandurang Budhkar Marg, next to Shree Simandhar Swami Jain Temple, Worli, Mumbai, Maharashtra 400018, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R3H+WM",
+      "compoundCode": "2R3H+WM Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.004854899999998,
+      "longitude": 72.8292456
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=10751463099883922343&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Lodha Park",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400018",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Pandurang Budhkar Marg",
+        "next to Shree Simandhar Swami Jain Temple",
+        "Worli"
+      ]
+    }
+  },
+  {
+    "id": "ChIJm9eTRT3P5zsRU3CCs-TdGIM",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "First floor,22, Dhuleva Tower, G D Ambekar Rd, opposite Ram Mandir, Bhoiwada, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R4W+JQ",
+      "compoundCode": "2R4W+JQ Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.006545799999998,
+      "longitude": 72.8469981
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=9446544192743567443&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shri Bhoiwada Jain Sangh Aaradhna Bhavan (Upashray)- Vijay Kanchan Aaradhna Bhavan",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "First floor,22, Dhuleva Tower",
+        "G D Ambekar Rd",
+        "opposite Ram Mandir",
+        "Bhoiwada, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJQ6l5zYzO5zsRVXKNh0sWW34",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Jain Bhavan, 129, Sitaram Jadhav Marg, Lower Parel West, Lower Parel, Mumbai, Maharashtra 400013, India",
+    "plusCode": {
+      "globalCode": "7JCJXRWH+F3",
+      "compoundCode": "XRWH+F3 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.996247399999998,
+      "longitude": 72.8277435
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=9104895585312141909&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shantinath Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Jain Bhavan",
+        "129, Sitaram Jadhav Marg",
+        "Lower Parel West"
+      ]
+    }
+  },
+  {
+    "id": "ChIJA9asDv3O5zsRz_tl4S01Rk4",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Mulraj Bhawan, 3rd Floor, Acharya Donde Marg, sewri Naka, sewri(w), Mumbai 400015Maharashtra, Mulraj Bhawan, Acharya Donde Marg, Abyudaya Nagar, Azad Nagar, Parel, Mumbai, Maharashtra 400015, India",
+    "plusCode": {
+      "globalCode": "7JCJXVX2+87",
+      "compoundCode": "XVX2+87 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.998311299999997,
+      "longitude": 72.85065829999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=5640254054499482575&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Adinath Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400015",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Mulraj Bhawan",
+        "Mulraj Bhawan, 3rd Floor, Acharya Donde Marg, sewri Naka, sewri(w), Mumbai 400015Maharashtra",
+        "Acharya Donde Marg",
+        "Abyudaya Nagar, Azad Nagar, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJx4ej1OvO5zsRleSf9-m6bqM",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Plot No, Bhairav Darshan, 882, Jagannath Bhatankar Marg, Elphinston West, Dighe Nagar, Parel, Mumbai, Maharashtra 400013, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R5M+9J",
+      "compoundCode": "2R5M+9J Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0084287,
+      "longitude": 72.83400259999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=11776555589665023125&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Vasupujyaswami Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400013",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Plot No, Bhairav Darshan",
+        "882, Jagannath Bhatankar Marg",
+        "Elphinston West, Dighe Nagar, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJtRVBnObO5zsRmNJuJAVpRzc",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "Parel Village, Parmanand Wadi, Parel, Mumbai, Maharashtra 400012, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R2W+9H",
+      "compoundCode": "2R2W+9H Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0009266,
+      "longitude": 72.84637839999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=3983267866239488664&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Kalshi Bhavan",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "Parel Village, Parmanand Wadi, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ5xJ3FO_O5zsRy4BzbmY5lQI",
+    "types": [
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "SNEHADEEP CHS, SHATRUNJAY TOWER-1, 72, Vitthal Chavan Marg, कृष्णा नगर, परळ, मुंबई, महाराष्ट्र 400012, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R4Q+23",
+      "compoundCode": "2R4Q+23 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.005035,
+      "longitude": 72.8376794
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=186118071708254411&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shatrunjay Tower",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400012",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "SNEHADEEP CHS",
+        "SHATRUNJAY TOWER-1",
+        "72, Vitthal Chavan Marg",
+        "Krishna Nagar, Parel"
+      ]
+    }
+  },
+  {
+    "id": "ChIJXQQEjubO5zsR49B2RVVMRtk",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "151, St Paul St, Dadar East, Mumbai, Maharashtra 400014, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R4V+XF",
+      "compoundCode": "2R4V+XF Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0073904,
+      "longitude": 72.8436897
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=15656285083721453795&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Amrutmay Vasupujay Swami Jain Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "151, St Paul St",
+        "Dadar East"
+      ]
+    }
+  },
+  {
+    "id": "ChIJ-QXdT8PO5zsR8ltFS9ZAS24",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "4th Floor, Bhavani Complex, 403/A, Bhavani Shankar Rd, Near Kabutar khana, Dadar West, Dadar, Mumbai, Maharashtra 400028, India",
+    "plusCode": {
+      "globalCode": "7JFJ2R8Q+XJ",
+      "compoundCode": "2R8Q+XJ Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 19.0174395,
+      "longitude": 72.8390877
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=7947517256555387890&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Sheetalnath Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400028",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "4th Floor, Bhavani Complex",
+        "403/A, Bhavani Shankar Rd",
+        "Dadar West, Dadar"
+      ]
+    }
+  },
+  {
+    "id": "ChIJLTsiHf_O5zsRYl74GnkWOHo",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3rd Floor, Mulraj Bhuvan, T.J. Rd, Cotton Green Zakaria B, Abhyudaya Nagar, Sewri, Mumbai, Maharashtra 400015, India",
+    "plusCode": {
+      "globalCode": "7JCJXRVX+63",
+      "compoundCode": "XRVX+63 Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9930359,
+      "longitude": 72.84769399999999
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=8806813780722343522&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Bhagwan Adeshwarji Jain Mandir",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400015",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "3rd Floor, Mulraj Bhuvan",
+        "T.J. Rd",
+        "Sewri"
+      ]
+    }
+  },
+  {
+    "id": "ChIJRRBnsPXO5zsRTTEnulMjk9k",
+    "types": [
+      "place_of_worship",
+      "point_of_interest",
+      "establishment"
+    ],
+    "formattedAddress": "3rd Floor, Har Har Wala Building, NM Joshi Marg, opp. Poddar Mill, BDD Chawl, Lower Parel, Mumbai, Maharashtra 400011, India",
+    "plusCode": {
+      "globalCode": "7JCJXRRJ+CP",
+      "compoundCode": "XRRJ+CP Mumbai, Maharashtra, India"
+    },
+    "location": {
+      "latitude": 18.9910005,
+      "longitude": 72.8317612
+    },
+    "googleMapsUri": "https://maps.google.com/?cid=15677913570319216973&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQQABgEIAA",
+    "displayName": {
+      "text": "Shantinath Jain Ghar Derasar",
+      "languageCode": "en"
+    },
+    "postalAddress": {
+      "regionCode": "IN",
+      "languageCode": "en",
+      "postalCode": "400011",
+      "administrativeArea": "Maharashtra",
+      "locality": "Mumbai",
+      "addressLines": [
+        "3rd Floor, Har Har Wala Building",
+        "NM Joshi Marg",
+        "opp. Poddar Mill"
+      ]
+    }
+  }
+]

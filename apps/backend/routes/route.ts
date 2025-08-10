@@ -5,7 +5,7 @@ export const apiRoutes = new Hono();
 
 // 1. Routes which are public `/public/`
 import { placeViewRoutes } from './placeview'; apiRoutes.route('/public/place', placeViewRoutes);
-
+import { gPlace } from './gplace'; apiRoutes.route('/public/gplace', gPlace);
 
 // 2. Routes which are protected by authentication `/p/`
 // Note: '/p/' stands for protected routes.
