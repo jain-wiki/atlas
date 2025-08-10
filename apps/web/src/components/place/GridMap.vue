@@ -11,21 +11,22 @@
 
       <QCardSection class="tw:flex-shrink-0">
         <div class="tw:flex tw:items-center tw:justify-between tw:gap-4">
-          <div class="tw:flex tw:flex-col tw:gap-1">
-            <span class="grid-info" v-if="gridRectangles.length > 0">
-              {{ gridRectangles.length }} grid cells displayed
-            </span>
-            <span v-if="map">
-              The Zoom level is {{ map.getZoom() }}
-            </span>
+          <div>
+            Select the <strong>grid cell</strong> you want to fetch the data for.
           </div>
           <QBtn color="primary" icon="my_location" label="Current Location" @click="setCurrentLocation"
             :loading="isLocationLoading" :disable="locationError !== null">
             <QTooltip v-if="locationError">{{ locationError }}</QTooltip>
           </QBtn>
-          <div v-if="locationError">
-            {{ locationError }}
-          </div>
+        </div>
+        <div v-if="locationError" class="tw:bg-red-200"> {{ locationError }} </div>
+      </QCardSection>
+
+      <QCardSection>
+        <div class="tw:flex tw:items-center tw:gap-4">
+          <QInput v-model="selectedDigiPin" label="Selected DigiPin" outlined readonly class="tw:flex-1"
+            placeholder="Click on a grid cell to select" />
+          <QBtn color="primary" label="Fetch Places" icon="place" :disable="!selectedDigiPin" @click="fetchPlaces" />
         </div>
       </QCardSection>
 
@@ -48,6 +49,7 @@ const mapContainer: Ref<HTMLElement | null> = ref(null)
 const map: Ref<L.Map | null> = ref(null)
 const gridRectangles: Ref<L.Rectangle[]> = ref([])
 const currentLocationMarker: Ref<L.Marker | null> = ref(null)
+const selectedDigiPin = ref('')
 
 // Geolocation setup
 const { coords, error: locationError, resume, pause } = useGeolocation()
@@ -57,6 +59,23 @@ const isLocationLoading = computed(() => {
   // Show loading if we don't have coordinates yet and there's no error
   return coords.value.latitude === null && coords.value.longitude === null && locationError.value === null
 })
+
+/**
+ * Fetch places for the selected DigiPin
+ */
+const fetchPlaces = (): void => {
+  if (!selectedDigiPin.value) {
+    console.warn('No DigiPin selected')
+    return
+  }
+
+  // TODO: Implement API call to fetch places for the selected DigiPin
+  console.log('Fetching places for DigiPin:', selectedDigiPin.value)
+
+  // You can implement the actual API call here
+  // Example:
+  // const places = await fetchPlacesFromAPI(selectedDigiPin.value)
+}
 
 
 /**
@@ -162,6 +181,11 @@ const generateDigiPinGrid = (): void => {
         const popupContent = `${prefix}
 <pre style="margin:0;">${JSON.stringify(info, null, 1)}</pre>`
         rectangle.bindPopup(popupContent)
+
+        // Add click event to capture DigiPin selection
+        rectangle.on('click', () => {
+          selectedDigiPin.value = prefix
+        })
 
         gridRectangles.value.push(rectangle)
       } catch (error) {
