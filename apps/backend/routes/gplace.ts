@@ -51,7 +51,7 @@ gPlace.get('/list',
           break;
 
         case 'accepted':
-          sql += ` AND (classification IS NOT NULL OR classification != 'R')`;
+          sql += ` AND (classification IS NOT NULL AND classification <> 'R')`;
           break;
 
         default:
@@ -73,4 +73,34 @@ gPlace.get('/list',
       pageNo: Number(pageNo),
       pageLimit: Number(pageLimit),
     });
+  });
+
+
+const updateClassificationStatement = db.query(
+  'UPDATE gmaps_places SET classification = $classification WHERE id = $placeId;');
+
+gPlace.patch('/classify/:placeId',
+  zValidator('json',
+    z.object({
+      classification: z.enum([
+        'T', // Temple
+        'C', // Community
+        'R', // Rejected
+      ]),
+    })),
+  async (c) => {
+    const { placeId } = c.req.param();
+    const { classification } = c.req.valid('json');
+
+    updateClassificationStatement.run({
+      classification,
+      placeId,
+    });
+
+    return c.json({
+      success: true,
+      show: true,
+      message: 'Place classification updated',
+    });
+
   })
