@@ -90,6 +90,9 @@
       },
     },
   },
+  "trustedDependencies": [
+    "tailwindcss",
+  ],
   "catalog": {
     "axios": "1.11.0",
     "better-auth": "1.2.9",
