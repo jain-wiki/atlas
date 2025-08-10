@@ -9,6 +9,10 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   appType: 'spa',
+  server: {
+    port: 5003, // So that the Local Server can run backend and frontend on the same port
+    strictPort: true,
+  },
 
   plugins: [
     vue(
