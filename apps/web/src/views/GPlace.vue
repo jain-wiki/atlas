@@ -17,6 +17,7 @@
         <div class="tw:flex tw:gap-2">
           <QBtn @click="searchPlaces" color="primary" :loading="loading" label="Search" />
           <QBtn @click="clearForm" color="secondary" outline label="Clear" />
+          <QBtn @click="showGridMap = true" color="primary" outline label="Add Place" icon="add_location" />
         </div>
       </QCardSection>
     </QCard>
@@ -27,7 +28,7 @@
 
     <!-- Dialogs -->
     <PlaceDialog v-model:show="showDetails" :place="selectedPlace" @place-updated="handlePlaceUpdated" />
-    <GridMap @digipin-selected="handleDigipinSelected" />
+    <GridMap v-model:show="showGridMap" @digipin-selected="handleDigipinSelected" />
   </QPage>
 </template>
 
@@ -44,6 +45,7 @@ import type { Place } from '@atlas/types/src/gplace'
 const loading = ref(false)
 const places = ref<Place[]>([])
 const showDetails = ref(false)
+const showGridMap = ref(false)
 const selectedPlace = ref<Place | null>(null)
 const searchForm = reactive({
   digipin5: '',

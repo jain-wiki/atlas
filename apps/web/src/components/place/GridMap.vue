@@ -4,7 +4,7 @@
       <QBar class="tw:bg-gradient-to-br! tw:from-slate-800 tw:to-slate-500 tw:text-white tw:z-[1000]">
         <span>Map Boxes</span>
         <QSpace />
-        <QBtn dense flat icon="close" v-close-popup>
+        <QBtn dense flat icon="close" @click="show = false">
           <QTooltip>Close</QTooltip>
         </QBtn>
       </QBar>
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount, computed, type Ref } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed, watch, type Ref } from 'vue'
 import { useGeolocation } from '@vueuse/core'
 import * as L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -51,7 +51,7 @@ const emit = defineEmits<{
   'digipin-selected': [digipin5: string]
 }>()
 
-const show = ref(true)
+const show = defineModel<boolean>('show', { default: false })
 const mapContainer: Ref<HTMLElement | null> = ref(null)
 const map: Ref<L.Map | null> = ref(null)
 const gridRectangles: Ref<L.Rectangle[]> = ref([])
@@ -248,7 +248,13 @@ const initializeMap = (): void => {
 }
 
 onMounted(() => {
-  setTimeout(initializeMap, 100)
+  // Watch for when the dialog becomes visible to initialize the map
+  watch(show, (isVisible) => {
+    if (isVisible && !map.value) {
+      // Small delay to ensure the dialog is fully rendered
+      setTimeout(initializeMap, 100)
+    }
+  }, { immediate: true })
 })
 
 onBeforeUnmount(() => {
