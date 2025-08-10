@@ -13,7 +13,7 @@
 
     <!-- Places Grid -->
     <div v-else>
-      <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-6 tw:mb-6">
+      <div class="tw:grid tw:grid-cols-1 tw:md:grid-cols-2 tw:lg:grid-cols-3 tw:gap-4 tw:mb-6">
         <PlaceCard v-for="place in places" :key="place.id" :place="place" @show-details="emit('show-details', place)" />
       </div>
 

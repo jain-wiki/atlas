@@ -8,13 +8,12 @@
       <QCardSection v-if="place">
         <div class="tw:space-y-2">
           <div>
-            <strong>Location:</strong> {{ place.pincode }}, {{ place.locality }}, {{ place.administrativeArea }}
-          </div>
-          <div>
-            <strong>Digipin5:</strong> {{ place.digipin5 }}
-          </div>
-          <div v-if="place.classification">
-            <strong>Classification:</strong> {{ place.classification }}
+            <strong>Pincode:</strong>
+            {{ place.pincode }},
+            <strong>Location:</strong>
+            {{ place.locality }}, {{ place.administrativeArea }}
+            <strong>Digipin5:</strong>
+            {{ place.digipin5 }}
           </div>
           <div v-if="placeData">
             <strong>Address:</strong> {{ placeData.formattedAddress }}
@@ -29,27 +28,30 @@
         </div>
       </QCardSection>
 
+      <QSeparator class="tw:mb-4" />
       <!-- Classification Form -->
       <QCardSection v-if="place && !successMessage">
-        <QSeparator class="tw:mb-4" />
-        <div class="tw:text-h6 tw:mb-4">Update Classification</div>
-        <QOptionGroup v-model="selectedClassification" :options="classificationOptions" color="primary" type="radio" />
-      </QCardSection>
+        <strong>Classification:</strong>
+        <div class="tw:flex tw:gap-4">
 
+          <QOptionGroup inline v-model="selectedClassification" :options="classificationOptions" color="primary"
+            type="radio" />
+          <QBtn v-if="!successMessage && place" label="Update Classification" color="primary" :loading="updating"
+            :disable="!selectedClassification" @click="updateClassification" outline />
+        </div>
+      </QCardSection>
       <!-- Success Message -->
       <QCardSection v-if="successMessage">
-        <QSeparator class="tw:mb-4" />
         <div class="tw:text-center tw:py-4">
           <QIcon name="check_circle" color="positive" size="3em" class="tw:mb-2" />
           <div class="tw:text-positive tw:text-lg">{{ successMessage }}</div>
         </div>
       </QCardSection>
 
+      <QSeparator class="tw:mb-4" />
       <QCardActions align="right">
         <QBtn v-if="placeData?.googleMapsUri && !successMessage" label="Open in Google Maps" color="primary"
           @click="openGoogleMapsFromDialog" />
-        <QBtn v-if="!successMessage && place" label="Update Classification" color="positive" :loading="updating"
-          :disable="!selectedClassification" @click="updateClassification" />
         <QBtn label="Close" color="grey" flat @click="closeDialog" />
       </QCardActions>
     </QCard>
@@ -86,9 +88,9 @@ const successMessage = ref('')
 const selectedClassification = ref('')
 
 const classificationOptions = [
-  { label: 'Temple', value: 'T' },
-  { label: 'Community', value: 'C' },
-  { label: 'Rejected', value: 'R' }
+  { label: 'Temple (Mandir/Tirth)', value: 'T' },
+  { label: 'Community (Bhavan/Upashray)', value: 'C' },
+  { label: 'Reject', value: 'R' }
 ]
 
 const placeData = computed<PlaceData | null>(() => {
