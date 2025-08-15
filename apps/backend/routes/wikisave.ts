@@ -22,7 +22,7 @@ const sectItems = {
 } as const;
 
 
-const updateMapsPlacesStatement = db.prepare(`
+const updateMapsPlacesStatement = db.query(`
   UPDATE gmaps_places SET item = $itemId WHERE id = $placeCid;`)
 
 // Create a new item
@@ -49,17 +49,25 @@ wikiSave.post('/item',
       administrativeArea, locality, postalCode, googleMapsUri, googleMapsPlaceId,
     } = c.req.valid('json');
 
+    // Extract CID from Google Maps URI
+    const cid = getCidFromGoogleMapsUri(googleMapsUri);
+    if (!cid) { throw new Error('Failed to extract CID from Google Maps URI'); }
+
     const claims = {} as any
     if (classification) { claims['P1'] = instanceOfItems[classification] }
     if (sect) { claims['P16'] = sectItems[sect] }
-    // if (administrativeArea) { claims['P7'] =  } // TODO: Think about how to handle string to Item ID mapping
-    // if (locality) { claims['P7'] =  } // TODO: Think about how to handle string to Item ID mapping
+
+    // administrative territory property (P4)
+    const p4Values = [] as string[];
+    if (administrativeArea) { p4Values.push(administrativeArea) }
+    if (locality) { p4Values.push(locality) }
+    if (p4Values.length) { claims['P4'] = p4Values }
+
     if (postalCode) { claims['P15'] = postalCode }
     if (googleMapsPlaceId) { claims['P25'] = googleMapsPlaceId }
 
-    const cid = getCidFromGoogleMapsUri(googleMapsUri);
-    if (!cid) { throw new Error('Failed to extract CID from Google Maps URI'); }
     if (googleMapsUri) { claims['P5'] = `https://www.google.com/maps?cid=${cid}` }
+    claims['P7'] = 'Q1' // TODO: Think of removing this. Currently we are adding only Places in India, hence this is fine.
 
     const itemId = await createWikiItem(label, description, claims);
     if (itemId) {
