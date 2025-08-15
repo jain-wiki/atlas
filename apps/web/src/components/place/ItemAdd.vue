@@ -24,12 +24,18 @@
               <QInput v-model="formData.description" label="Description *" outlined dense required counter
                 maxlength="500" class="tw:col-span-full" />
 
-              <QSelect v-model="formData.classification" label="Classification *" outlined dense
-                :options="classificationOptions" emit-value map-options
-                :rules="[val => !!val || 'Classification is required']" />
+              <div class="tw:space-y-2">
+                <div class="tw:text-sm tw:font-medium">Classification *</div>
+                <QOptionGroup v-model="formData.classification" :options="classificationOptions" color="primary"
+                  inline />
+              </div>
 
-              <QSelect v-model="formData.sect" label="Sect" outlined dense :options="sectOptions" emit-value map-options
-                clearable />
+              <div class="tw:space-y-2">
+                <div class="tw:text-sm tw:font-medium">Sect</div>
+                <QOptionGroup v-model="formData.sect" :options="sectOptions" color="primary" inline />
+                <QBtn v-if="formData.sect" flat dense size="sm" label="Clear" @click="formData.sect = ''"
+                  class="tw:ml-2" />
+              </div>
             </div>
 
             <!-- Location Fields -->
