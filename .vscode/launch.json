@@ -23,6 +23,14 @@
       "cwd": "${workspaceFolder}/apps/backend",
       "watchMode": true,
       "runtime": "bun"
-    }
+    },
+    {
+      "type": "bun",
+      "request": "launch",
+      "name": "bun:File/backend",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/apps/backend",
+      "runtime": "bun",
+    },
   ]
 }
