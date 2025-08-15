@@ -42,7 +42,8 @@ SELECT ?item ?itemLabel ?typeofLabel ?modified WHERE {
   ?item schema:dateModified ?modified.
   OPTIONAL {?item yp:P1 ?typeof.}
   BIND(NOW() - ?modified AS ?date_range)
-  FILTER(?date_range <= 30)  # Items modified in the last day (adjust to <=7 for a week, etc.)
+  FILTER(?date_range <= 30)  # Items modified in the last 30 days (adjust to <=7 for a week, etc.)
+  # MINUS { ?item yp:P1 ?typeof. } # Filter items where instance of (ie P1) is not set.
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
 }
 ORDER BY DESC(?modified)
