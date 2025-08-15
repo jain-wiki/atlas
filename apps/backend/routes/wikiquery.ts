@@ -29,3 +29,25 @@ wikiQueryRoute.get('/locality',
       'Cache-Control': 'public, max-age=120' // Caching for 2 minutes
     });
   });
+
+
+const sparqlTirthankar = `
+SELECT ?item ?itemLabel WHERE {
+?item yp:P1 yq:Q44.
+SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
+}
+LIMIT 50
+`
+// List of all tirthankars
+wikiQueryRoute.get('/tirthankar',
+  async (c) => {
+    const data = await getDataFromWikibase(sparqlTirthankar, true)
+    // TODO: think of catching this in memory and then serving from there instead of querying Wikibase every time
+    return c.json({
+      success: true, show: false,
+      message: `tirthankar list (P1-Q44)`,
+      data: data,
+    }, 200, {
+      'Cache-Control': 'public, max-age=120' // Caching for 2 minutes
+    });
+  });
