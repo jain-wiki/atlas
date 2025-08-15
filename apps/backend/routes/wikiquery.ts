@@ -14,7 +14,7 @@ SELECT ?item ?itemLabel WHERE {
 ?item yp:P1 yq:Q43.
 SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }
-LIMIT 100
+LIMIT 1000
 `
 // List of all localities
 wikiQueryRoute.get('/locality',
