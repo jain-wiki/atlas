@@ -1,4 +1,4 @@
-import type { ApiResponse } from '@jamku/types';
+import type { ApiResponse } from '@atlas/types';
 import { Hono } from 'hono';
 
 import pkg from '../package.json' with { type: 'json' }

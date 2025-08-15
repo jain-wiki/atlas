@@ -10,10 +10,10 @@
     "resolveJsonModule": true,
     "declaration": true,
     "paths": {
-      "@jamku/types": [
+      "@atlas/types": [
         "./packages/types/src"
       ],
-      "@jamku/utils": [
+      "@atlas/utils": [
         "./packages/utils/src"
       ]
     }

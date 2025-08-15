@@ -1,7 +1,7 @@
 import { auth } from '../../lib/auth';
 
 import type { Context, Next } from 'hono'
-import type { ApiResponse } from '@jamku/types';
+import type { ApiResponse } from '@atlas/types';
 import type { Session, User } from '../../lib/auth';
 
 // Extend Hono's Context to include 'session'

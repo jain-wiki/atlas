@@ -8,7 +8,7 @@ import { errorHandler } from './routes/middleware/errorhandler';
 import { apiRoutes } from './routes/route';
 
 import type { Session, User } from './lib/auth'
-import type { ApiResponse } from '@jamku/types';
+import type { ApiResponse } from '@atlas/types';
 
 const app = new Hono<{
   Variables: {

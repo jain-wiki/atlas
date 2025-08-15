@@ -1,6 +1,6 @@
 // Ref: https://app.studyraid.com/en/read/11303/352723/error-handling-middleware
 
-import type { ApiResponse } from '@jamku/types';
+import type { ApiResponse } from '@atlas/types';
 import type { Context } from 'hono'
 
 export async function errorHandler(err: Error, c: Context) {
