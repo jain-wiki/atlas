@@ -28,3 +28,11 @@ export async function createWikiItem(title: string, description: string, claims:
   })
   return entity.id
 }
+
+export async function editWikiItem(itemId: string, claims: Record<string, string>) {
+  const { entity } = await wbEdit.entity.edit({
+    id: itemId,
+    claims
+  })
+  return entity.id
+}
