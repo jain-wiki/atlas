@@ -17,6 +17,7 @@ Types of Jain Places:
 ## Development Setup
 
 You will need to install Bun to run the project. Follow the instructions on the [Bun website](https://bun.sh/docs/installation) to install it.
+1. <kbd>Ctrl+Shift+B</kbd> To start the local host development server
 
 ## Folder Structure
 - `apps/`: Contains the main applications of the Jain Atlas project.
