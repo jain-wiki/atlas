@@ -1,34 +1,31 @@
-import { WBK } from 'wikibase-sdk'
+import { WBK, simplifySparqlResults, } from 'wikibase-sdk'
+import axios from 'axios'
 
-const wbk = WBK({
+
+export const WikiQuery = WBK({
   instance: 'https://data.jain.wiki',
   sparqlEndpoint: 'https://data.jain.wiki/query/sparql'
 })
 
-const sparql = `
-PREFIX yq: <https://data.jain.wiki/entity/>
-PREFIX yp: <https://data.jain.wiki/prop/direct/>
-
-SELECT *
-WHERE
-{
- ?s ?p ?o
- OPTIONAL { ?item yp:P2 ?loc }
- SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
-}
-LIMIT 10
-
-`
-const url = wbk.sparqlQuery(sparql)
-
-const response = await fetch(url, {
-  method: 'POST',
+export const AxWikiQuery = axios.create({
   headers: {
     'Accept': 'application/json',
-    'User-Agent': 'Jain-Atlas/1.0'
+    'User-Agent': 'Jain-Atlas/1.0',
   }
 })
 
-const data = await response.json()
+const sparqlPrefix = `
+PREFIX yq: <https://data.jain.wiki/entity/>
+PREFIX yp: <https://data.jain.wiki/prop/direct/>
+`
 
-console.log('SPARQL query result:', data)
+export async function getDataFromWikibase(sparqlQueryString: string, simplify = false) {
+  if (!sparqlQueryString) throw new Error('No SPARQL query provided')
+  const sparqlWithPrefix = sparqlPrefix + sparqlQueryString // Add SPARQL prefix
+  const url = WikiQuery.sparqlQuery(sparqlWithPrefix) // Construct the SPARQL query URL
+  const response = await AxWikiQuery.get(url) // Send the GET request using axios
+  if (simplify) { // if simplify is true then simplify the results and return
+    return simplifySparqlResults(response.data)
+  }
+  return response.data
+}
