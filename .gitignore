@@ -43,3 +43,9 @@ scratch.ts
 *.sqlite-wal
 *.sqlite-shm
 
+# Excel Files
+*.xlsx
+*.xls
+*.xlsm
+*.xlsb
+*.csv
