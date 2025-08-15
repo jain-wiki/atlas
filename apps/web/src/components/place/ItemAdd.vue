@@ -2,7 +2,6 @@
   <QDialog :model-value="show" @update:model-value="show = $event" maximized class="grid-map-dialog">
     <QCard class="tw:h-full tw:flex tw:flex-col">
       <QBar class="tw:bg-gradient-to-br! tw:from-slate-800 tw:to-slate-500 tw:text-white tw:z-[1000]">
-        <span>Add Item to Main Database (WikiBase on https://data.jain.wiki)</span>
         <QSpace />
         <QBtn dense flat icon="close" @click="show = false">
           <QTooltip>Close</QTooltip>
@@ -11,10 +10,14 @@
 
       <QCardSection class="tw:grid-cols-2 tw:grid">
         <!-- Form -->
-        <div class="tw:flex-1 tw:overflow-auto tw:p-6">
+        <div class="tw:flex-1">
           <QForm @submit="onSubmit" class="tw:max-w-2xl tw:mx-auto tw:space-y-6">
+            <div>
+              <span class="tw:text-lg">Add Item to Main Database (ie. WikiBase on https://data.jain.wiki)</span>
+            </div>
             <!-- Required Fields -->
-            <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-4">
+            <div class=" tw:text-gray-700 tw:underline">Basic Details</div>
+            <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QInput v-model="formData.label" label="Label *" outlined dense required counter maxlength="100"
                 class="tw:col-span-full" hint="Remove the words like 'Jain Temple/Mandir'" />
 
@@ -30,10 +33,9 @@
             </div>
 
             <!-- Location Fields -->
-            <QSeparator />
-            <div class="tw:text-lg tw:font-semibold tw:text-gray-700">Location Details</div>
+            <div class="tw:text-gray-700 tw:underline">Location Details</div>
 
-            <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-4">
+            <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QInput v-model="formData.administrativeArea" label="Administrative Area" outlined dense
                 maxlength="100" />
 
@@ -104,16 +106,6 @@ const sectOptions = [
   { label: 'Sthanakvasi', value: 'Sthanakvasi' }
 ]
 
-// URL validation function
-const isValidUrl = (val: string) => {
-  try {
-    new URL(val)
-    return true
-  } catch {
-    return 'Please enter a valid URL'
-  }
-}
-
 // Pre-populate form with place data if available
 const populateFormFromPlace = () => {
   if (props.place && placeResponse.value) {
@@ -157,11 +149,8 @@ watch(() => props.place, () => {
 
 // Form submission handler
 const onSubmit = async () => {
-  if (isSubmitting.value) return
-
+  isSubmitting.value = true
   try {
-    isSubmitting.value = true
-
     // Prepare the payload for the API
     const payload = {
       label: formData.label.trim(),
@@ -179,8 +168,6 @@ const onSubmit = async () => {
     const response = await Ax.post('/public/wiki/item', payload)
 
     if (response.data.success) {
-
-
       emit('item-added')
       show.value = false
 
@@ -199,8 +186,8 @@ const onSubmit = async () => {
     }
   } catch (error: any) {
     console.error('Error adding item to WikiBase:', error)
-  } finally {
-    isSubmitting.value = false
   }
+  isSubmitting.value = false
 }
+
 </script>
