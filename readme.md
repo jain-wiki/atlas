@@ -38,8 +38,9 @@ PREFIX yp: <https://data.jain.wiki/prop/direct/>
 
 Get List of last modified items
 ```sql
-SELECT ?item ?itemLabel ?modified WHERE {
+SELECT ?item ?itemLabel ?typeofLabel ?modified WHERE {
   ?item schema:dateModified ?modified.
+  OPTIONAL {?item yp:P1 ?typeof.}
   BIND(NOW() - ?modified AS ?date_range)
   FILTER(?date_range <= 30)  # Items modified in the last day (adjust to <=7 for a week, etc.)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
@@ -52,3 +53,5 @@ LIMIT 100
 
 - https://data.jain.wiki/wiki/Special:Log/delete
 - https://data.jain.wiki/wiki/Special:EntityData/Q12.json (JSON representation of the entity)
+- https://data.jain.wiki/wiki/Special:Log/protect Logs of protection changes
+- https://data.jain.wiki/wiki/Special:ListUsers List of users
