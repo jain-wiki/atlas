@@ -10,16 +10,19 @@
       </QBar>
 
       <QCardSection class="tw:flex-shrink-0">
-        {{ place }}
+        <pre>
+{{ place }}
+{{ placeResponse }}
+        </pre>
       </QCardSection>
     </QCard>
   </QDialog>
 </template>
 
 <script setup lang="ts">
-import type { Place } from '@atlas/types/src/gplace'
 import { Ax } from '@/helper/axios'
-
+import { computed } from 'vue'
+import type { Place } from '@atlas/types/src/gplace'
 const show = defineModel<boolean>('show', { default: false })
 
 const props = defineProps<{
@@ -30,6 +33,7 @@ const emit = defineEmits<{
   'item-added': []
 }>()
 
+const placeResponse = computed(() => JSON.parse(props.place?.response ?? '{}'))
 
 
 </script>
