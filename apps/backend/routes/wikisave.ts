@@ -30,7 +30,7 @@ wikiSave.post('/item',
   zValidator('json',
     z.object({
       // Required Fields
-      label: z.string().length(100),
+      label: z.string().max(100),
       description: z.string().max(500), // Generated from "addressLines" array
       classification: z.enum(['T', 'C']), // T for Temple, C for Community Center
       // Optional Fields
