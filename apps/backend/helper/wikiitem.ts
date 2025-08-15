@@ -17,7 +17,6 @@ const wbEdit = WBEdit({
     username: JAIN_WIKI_USERNAME,
     password: JAIN_WIKI_PASSWORD,
   },
-  tags: ['jain-atlas']
 })
 
 export async function createWikiItem(title: string, description: string, claims: Record<string, string>) {
