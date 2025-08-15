@@ -1,5 +1,5 @@
 <template>
-  <QDialog :model-value="show" maximized class="grid-map-dialog">
+  <QDialog :model-value="show" @update:model-value="show = $event" maximized class="grid-map-dialog">
     <QCard class="tw:h-full tw:flex tw:flex-col">
       <QBar class="tw:bg-gradient-to-br! tw:from-slate-800 tw:to-slate-500 tw:text-white tw:z-[1000]">
         <span>Add Item to Main Database (WikiBase on https://data.jain.wiki)</span>
@@ -10,10 +10,10 @@
       </QBar>
 
       <QCardSection class="tw:flex-shrink-0">
-        <pre>
+        <!-- <pre>
 {{ place }}
 {{ placeResponse }}
-        </pre>
+        </pre> -->
       </QCardSection>
     </QCard>
   </QDialog>
