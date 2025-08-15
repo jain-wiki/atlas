@@ -27,50 +27,58 @@ const mapsFieldMask = [
 
 
 export async function getTemplesFromGoogleMaps(locationRestriction: LocationRestriction) {
-  let allPlaces: Place[] = [];
-  let currentPageToken = undefined as string | undefined;
-  let currentPageCount = 1;
+  try {
 
-  // Make up to 3 API calls
-  while (currentPageCount <= PAGES_LIMIT) {
-    const response = await axios.post(
-      'https://places.googleapis.com/v1/places:searchText',
-      {
-        textQuery: 'jain temples',
-        languageCode: 'en',
-        locationRestriction: locationRestriction,
-        pageToken: currentPageToken || undefined, // Use currentPageToken if provided.
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY,
-          'X-Goog-FieldMask': mapsFieldMask,
+    let allPlaces: Place[] = [];
+    let currentPageToken = undefined as string | undefined;
+    let currentPageCount = 1;
+
+    // Make up to 3 API calls
+    while (currentPageCount <= PAGES_LIMIT) {
+      const response = await axios.post(
+        'https://places.googleapis.com/v1/places:searchText',
+        {
+          textQuery: 'jain temples',
+          languageCode: 'en',
+          locationRestriction: locationRestriction,
+          pageToken: currentPageToken || undefined, // Use currentPageToken if provided.
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': GOOGLE_MAPS_API_KEY,
+            'X-Goog-FieldMask': mapsFieldMask,
+          }
         }
+      );
+
+      const places = response.data?.places || [];
+      allPlaces = allPlaces.concat(places);
+
+      const responsePageToken = response.data?.nextPageToken;
+
+      // Log warning on final call
+      if (currentPageCount === PAGES_LIMIT && responsePageToken) {
+        console.warn(`Fetching ${PAGES_LIMIT} page of results. This is the final page that will be fetched. There are still more results available, but this function is limited to ${PAGES_LIMIT} pages.`);
       }
-    );
 
-    const places = response.data?.places || [];
-    allPlaces = allPlaces.concat(places);
+      // If no more pages or we've reached our limit, break
+      if (!responsePageToken || currentPageCount >= PAGES_LIMIT) {
+        break;
+      }
 
-    const responsePageToken = response.data?.nextPageToken;
+      // Prepare for next iteration
+      currentPageToken = responsePageToken;
+      currentPageCount++;
 
-    // Log warning on final call
-    if (currentPageCount === PAGES_LIMIT && responsePageToken) {
-      console.warn(`Fetching ${PAGES_LIMIT} page of results. This is the final page that will be fetched. There are still more results available, but this function is limited to ${PAGES_LIMIT} pages.`);
     }
+    // Loop completed, returning all places found
+    return allPlaces;
 
-    // If no more pages or we've reached our limit, break
-    if (!responsePageToken || currentPageCount >= PAGES_LIMIT) {
-      break;
-    }
-
-    // Prepare for next iteration
-    currentPageToken = responsePageToken;
-    currentPageCount++;
+  } catch (error) {
+    // @ts-ignore
+    throw new Error(`GoogleMaps Error ${error.name || ''} ${error.message}`);
   }
-
-  return allPlaces;
 
 }
 
