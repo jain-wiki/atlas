@@ -23,7 +23,10 @@ const sectItems = {
 
 
 const updateMapsPlacesStatement = db.query(`
-  UPDATE gmaps_places SET item = $itemId WHERE id = $placeCid;`)
+  UPDATE gmaps_places
+  SET item = $itemId, classification = $classification
+  WHERE id = $placeCid;`)
+
 
 // Create a new item
 wikiSave.post('/item',
@@ -71,8 +74,8 @@ wikiSave.post('/item',
 
     const itemId = await createWikiItem(label, description, claims);
     if (itemId) {
-      // Save the itemId in db
-      updateMapsPlacesStatement.run({ itemId, placeCid: cid });
+      // Save the itemId in db and also update classification
+      updateMapsPlacesStatement.run({ itemId, placeCid: cid, classification });
     }
 
     return c.json({
