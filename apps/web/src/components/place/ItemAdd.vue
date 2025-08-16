@@ -59,7 +59,9 @@
             </div>
 
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
-              <QInput v-model="formData.administrativeArea" label="State in India" outlined dense maxlength="100" />
+              <QSelect v-model="formData.administrativeArea" :options="filteredStateOptions" label="State in India"
+                color="primary" use-input input-debounce="0" @filter="filterState" @input-value="setStateInputValue"
+                clearable outlined dense hint="Type to search" />
 
               <QInput v-model="formData.locality" label="City/Town/Village" outlined dense />
               <QInput v-model="formData.address" label="Address" type="textarea" outlined dense rows="2"
@@ -131,6 +133,10 @@ const isSubmitting = ref(false) // Form submission loading state
 const tirthankarInputValue = ref('')
 const filteredTirthankarOptions = ref<Array<{ value: string; label: string }>>([])
 
+// Reactive data for State autocomplete
+const stateInputValue = ref('')
+const filteredStateOptions = ref<Array<{ value: string; label: string }>>([])
+
 // Form data reactive object
 const formData = reactive({
   label: '',
@@ -140,7 +146,7 @@ const formData = reactive({
   tirthankar: '' as 'Q14' | 'Q15' | 'Q16' | 'Q17' | 'Q18' | 'Q19' | 'Q20' | 'Q21' | 'Q22' | 'Q23' | 'Q24' | 'Q25' | 'Q26' | 'Q27' | 'Q28' | 'Q29' | 'Q30' | 'Q31' | 'Q32' | 'Q33' | 'Q34' | 'Q35' | 'Q36' | 'Q37',
   latitude: '',
   longitude: '',
-  administrativeArea: '',
+  administrativeArea: '' as 'Q64' | 'Q51' | 'Q7' | 'Q57' | 'Q48' | 'Q54' | 'Q45' | 'Q46' | 'Q47' | 'Q49' | 'Q50' | 'Q52' | 'Q53' | 'Q55' | 'Q56' | 'Q58' | 'Q59' | 'Q60' | 'Q61' | 'Q62' | 'Q63' | 'Q65' | 'Q66' | 'Q67' | 'Q68' | 'Q69' | 'Q70' | 'Q71' | '',
   locality: '',
   postalCode: '',
   address: '',
@@ -238,8 +244,28 @@ const setTirthankarInputValue = (val: string) => {
   tirthankarInputValue.value = val
 }
 
+// State autocomplete methods
+const filterState = (val: string, update: (fn: () => void) => void) => {
+  update(() => {
+    if (val === '') {
+      filteredStateOptions.value = stateOptions
+    }
+    else {
+      const needle = val.toLowerCase()
+      filteredStateOptions.value = stateOptions.filter(
+        option => option.label.toLowerCase().indexOf(needle) > -1
+      )
+    }
+  })
+}
+
+const setStateInputValue = (val: string) => {
+  stateInputValue.value = val
+}
+
 // Initialize filtered options
 filteredTirthankarOptions.value = tirthankarOptions
+filteredStateOptions.value = stateOptions
 
 // Pre-populate form with place data if available
 const populateFormFromPlace = () => {
@@ -249,7 +275,14 @@ const populateFormFromPlace = () => {
 
     formData.latitude = response.location.latitude || ''
     formData.longitude = response.location.longitude || ''
-    formData.administrativeArea = props.place.administrativeArea || ''
+
+    // Find and set the administrativeArea by searching state options
+    const administrativeAreaName = props.place.administrativeArea || ''
+    const matchingState = stateOptions.find(state =>
+      state.label.toLowerCase() === administrativeAreaName.toLowerCase()
+    )
+    formData.administrativeArea = matchingState ? matchingState.value as typeof formData.administrativeArea : ''
+
     formData.locality = props.place.locality || ''
     formData.postalCode = props.place.pincode || ''
     formData.googleMapsPlaceId = response.id || ''
