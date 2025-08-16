@@ -77,8 +77,34 @@
           </QForm>
         </div>
         <div>
-          <pre>
-{{ placeResponse }}</pre>
+          <div class="tw:mb-2">
+            <span class="tw:text-lg">Data from Google Maps</span>
+          </div>
+          <div class="tw:space-y-2" v-if="props.place">
+            <div>
+              <strong>Pincode:</strong>
+              {{ props.place.pincode }},
+              <strong>Digipin5:</strong>
+              {{ props.place.digipin5 }}
+              <br>
+              <strong>State:</strong>
+              {{ props.place.administrativeArea }}
+              <strong>City/Town/Village:</strong>
+              {{ props.place.locality }}
+            </div>
+            <div v-if="placeResponse">
+              <strong>Address:</strong> {{ placeResponse.formattedAddress }}
+            </div>
+            <div v-if="placeResponse?.types?.length">
+              <strong>Types:</strong>
+              <div class="tw:flex-wrap tw:gap-1 tw:mt-1 tw:inline">
+                <QChip v-for="type in placeResponse.types" :key="type" :label="type.replace(/_/g, ' ')"
+                  color="grey-3" />
+              </div>
+            </div>
+          </div>
+          <QBtn label="Open in Google Maps" color="primary" outline :href="placeResponse?.googleMapsUri" target="_blank"
+            icon="open_in_new" no-caps v-if="placeResponse?.googleMapsUri" class="tw:mt-2!" />
         </div>
       </QCardSection>
     </QCard>
@@ -188,7 +214,6 @@ const populateFormFromPlace = () => {
   if (props.place && placeResponse.value) {
     const response = placeResponse.value
     formData.label = props.place.displayName
-
 
     formData.latitude = response.location.latitude || ''
     formData.longitude = response.location.longitude || ''
