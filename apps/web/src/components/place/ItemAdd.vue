@@ -46,7 +46,7 @@
                 <div class="tw:text-sm tw:font-medium tw:mb-0">Tirthankar</div>
                 <QSelect v-model="formData.tirthankar" :options="filteredTirthankarOptions" color="primary" use-input
                   input-debounce="0" @filter="filterTirthankar" @input-value="setTirthankarInputValue" clearable
-                  outlined dense hint="Type to search" />
+                  outlined dense hint="Type to search" emit-value map-options />
               </div>
             </div>
 
@@ -61,7 +61,7 @@
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QSelect v-model="formData.administrativeArea" :options="filteredStateOptions" label="State in India"
                 color="primary" use-input input-debounce="0" @filter="filterState" @input-value="setStateInputValue"
-                clearable outlined dense hint="Type to search" />
+                clearable outlined dense hint="Type to search" emit-value map-options />
 
               <QInput v-model="formData.locality" label="City/Town/Village" outlined dense />
               <QInput v-model="formData.address" label="Address" type="textarea" outlined dense rows="2"
