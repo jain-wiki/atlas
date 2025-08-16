@@ -44,6 +44,7 @@
 
             <!-- Location Fields -->
             <div class="tw:text-gray-700 tw:underline tw:mb-2">Location Details</div>
+            <div class="tw:mb-2">latitude: {{ formData.latitude }}, longitude: {{ formData.longitude }}</div>
 
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QInput v-model="formData.administrativeArea" label="State in India" outlined dense maxlength="100" />
@@ -52,8 +53,7 @@
               <QInput v-model="formData.address" label="Address" type="textarea" outlined dense rows="2"
                 hint="Full address. Remove plus code if any." />
 
-              <QInput v-model="formData.postalCode" label="Postal Code" outlined dense maxlength="20"
-                hint="Postal code of the area." />
+              <QInput v-model="formData.postalCode" label="Postal Code" outlined dense maxlength="20" />
             </div>
 
             <!-- Submit Button -->
@@ -95,6 +95,8 @@ const formData = reactive({
   description: '',
   classification: '' as 'T' | 'C' | '',
   sect: '' as 'Digambar' | 'Shwetambar' | 'Terapanth' | 'Sthanakvasi' | '',
+  latitude: '',
+  longitude: '',
   administrativeArea: '',
   locality: '',
   postalCode: '',
@@ -116,12 +118,41 @@ const sectOptions = [
   { label: 'Sthanakvasi', value: 'Sthanakvasi' }
 ]
 
+const tirthankarOptions = [
+  { value: 'Q14', label: 'Rishabhanath' },
+  { value: 'Q15', label: 'Ajitanath' },
+  { value: 'Q16', label: 'Sambhavanath' },
+  { value: 'Q17', label: 'Abhinandananath' },
+  { value: 'Q18', label: 'Sumatinath' },
+  { value: 'Q19', label: 'Padmaprabhu' },
+  { value: 'Q20', label: 'Suparshvanath' },
+  { value: 'Q21', label: 'Chandraprabhu' },
+  { value: 'Q22', label: 'Suvidhinath' },
+  { value: 'Q23', label: 'Shitalanath' },
+  { value: 'Q24', label: 'Shreyansanath' },
+  { value: 'Q25', label: 'Vasupujya' },
+  { value: 'Q26', label: 'Vimalanath' },
+  { value: 'Q27', label: 'Anantanath' },
+  { value: 'Q28', label: 'Dharmanath' },
+  { value: 'Q29', label: 'Shantinath' },
+  { value: 'Q30', label: 'Kunthunath' },
+  { value: 'Q31', label: 'Aranath' },
+  { value: 'Q32', label: 'Mallinath' },
+  { value: 'Q33', label: 'Munisuvrat' },
+  { value: 'Q34', label: 'Naminath' },
+  { value: 'Q35', label: 'Neminath' },
+  { value: 'Q36', label: 'Parshvanath' },
+  { value: 'Q37', label: 'Mahavir' },]
+
 // Pre-populate form with place data if available
 const populateFormFromPlace = () => {
   if (props.place && placeResponse.value) {
     const response = placeResponse.value
     formData.label = props.place.displayName
 
+
+    formData.latitude = response.location.latitude || ''
+    formData.longitude = response.location.longitude || ''
     formData.administrativeArea = props.place.administrativeArea || ''
     formData.locality = props.place.locality || ''
     formData.postalCode = props.place.pincode || ''
