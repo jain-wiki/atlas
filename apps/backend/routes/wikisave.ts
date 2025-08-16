@@ -66,11 +66,10 @@ wikiSave.post('/item',
     if (locality) { p4Values.push(locality) }
     if (p4Values.length) { claims['P4'] = p4Values }
 
-    if (postalCode) { claims['P15'] = postalCode }
-    if (googleMapsPlaceId) { claims['P25'] = googleMapsPlaceId }
-
     if (googleMapsUri) { claims['P5'] = `https://www.google.com/maps?cid=${cid}` }
+    if (postalCode) { claims['P15'] = postalCode }
     claims['P7'] = 'Q1' // TODO: Think of removing this. Currently we are adding only Places in India, hence this is fine.
+    if (googleMapsPlaceId) { claims['P25'] = googleMapsPlaceId }
 
     const itemId = await createWikiItem(label, description, claims);
     if (itemId) {
