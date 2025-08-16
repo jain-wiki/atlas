@@ -12,42 +12,48 @@
         <!-- Form -->
         <div class="tw:flex-1">
           <QForm @submit="onSubmit" class="tw:max-w-2xl tw:mx-auto tw:space-y-6">
-            <div>
+            <div class="tw:mb-2">
               <span class="tw:text-lg">Add Item to Main Database (ie. WikiBase on https://data.jain.wiki)</span>
             </div>
             <!-- Required Fields -->
-            <div class=" tw:text-gray-700 tw:underline">Basic Details</div>
+            <div class=" tw:text-gray-700 tw:underline tw:mb-2">Basic Details</div>
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QInput v-model="formData.label" label="Label *" outlined dense required counter maxlength="100"
-                class="tw:col-span-full" hint="Remove the words like 'Jain Temple/Mandir'" />
+                class="tw:col-span-full" hint="Remove the words like 'Jain Temple/Mandir' or 'Digambar/Shwetambar'" />
 
               <QInput v-model="formData.description" label="Description *" outlined dense required counter
-                maxlength="500" class="tw:col-span-full" />
+                maxlength="100" class="tw:col-span-full"
+                hint="High level address of the place. Village/Town/City, District, State. Remove plus code if any." />
 
               <div class="tw:space-y-2">
-                <div class="tw:text-sm tw:font-medium">Classification *</div>
+                <div class="tw:text-sm tw:font-medium tw:mb-0">Classification *</div>
                 <QOptionGroup v-model="formData.classification" :options="classificationOptions" color="primary"
                   inline />
               </div>
 
               <div class="tw:space-y-2">
-                <div class="tw:text-sm tw:font-medium">Sect</div>
-                <QOptionGroup v-model="formData.sect" :options="sectOptions" color="primary" inline />
-                <QBtn v-if="formData.sect" flat dense size="sm" label="Clear" @click="formData.sect = ''"
-                  class="tw:ml-2" />
+                <div class="tw:text-sm tw:font-medium tw:mb-0">Sect
+                  <QBtn v-if="formData.sect" outline dense size="sm" label="Clear" color="primary"
+                    @click="formData.sect = ''" class="tw:ml-2!" />
+                </div>
+                <QOptionGroup v-model="formData.sect" :options="sectOptions" color="primary" inline class="tw:mb-0" />
+                <div class="tw:text-gray-600 tw:text-xs">If you need to add more then one value for this field, make
+                  the changes directly on the <strong>WikiBase</strong>, after the item is created.</div>
               </div>
             </div>
 
             <!-- Location Fields -->
-            <div class="tw:text-gray-700 tw:underline">Location Details</div>
+            <div class="tw:text-gray-700 tw:underline tw:mb-2">Location Details</div>
 
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
-              <QInput v-model="formData.administrativeArea" label="Administrative Area" outlined dense
-                maxlength="100" />
+              <QInput v-model="formData.administrativeArea" label="State in India" outlined dense maxlength="100" />
 
-              <QInput v-model="formData.locality" label="Locality" outlined dense maxlength="100" />
+              <QInput v-model="formData.locality" label="City/Town/Village" outlined dense />
+              <QInput v-model="formData.address" label="Address" type="textarea" outlined dense rows="2"
+                hint="Full address. Remove plus code if any." />
 
-              <QInput v-model="formData.postalCode" label="Postal Code" outlined dense maxlength="20" />
+              <QInput v-model="formData.postalCode" label="Postal Code" outlined dense maxlength="20"
+                hint="Postal code of the area." />
             </div>
 
             <!-- Submit Button -->
@@ -59,7 +65,8 @@
           </QForm>
         </div>
         <div>
-          Hello
+          <pre>
+{{ placeResponse }}</pre>
         </div>
       </QCardSection>
     </QCard>
@@ -71,17 +78,16 @@ import { Ax } from '@/helper/axios'
 import { computed, reactive, ref, watch } from 'vue'
 import type { Place } from '@atlas/types/src/gplace'
 
-const show = defineModel<boolean>('show', { default: false })
-
 const props = defineProps<{
   place: Place | null
 }>()
-
 const emit = defineEmits<{
   'item-added': []
 }>()
 
 const placeResponse = computed(() => JSON.parse(props.place?.response ?? '{}'))
+const show = defineModel<boolean>('show', { default: false })
+const isSubmitting = ref(false) // Form submission loading state
 
 // Form data reactive object
 const formData = reactive({
@@ -92,17 +98,15 @@ const formData = reactive({
   administrativeArea: '',
   locality: '',
   postalCode: '',
+  address: '',
   googleMapsUri: '',
   googleMapsPlaceId: ''
 })
 
-// Form submission loading state
-const isSubmitting = ref(false)
-
 // Options for dropdowns
 const classificationOptions = [
   { label: 'Temple', value: 'T' },
-  { label: 'Community Center', value: 'C' }
+  { label: 'Community Center (Bhavan/Sthanak)', value: 'C' }
 ]
 
 const sectOptions = [
@@ -116,33 +120,19 @@ const sectOptions = [
 const populateFormFromPlace = () => {
   if (props.place && placeResponse.value) {
     const response = placeResponse.value
+    formData.label = props.place.displayName
 
-    // Auto-adjust label to exactly 100 characters
-    let label = props.place.displayName || response.displayName?.text || ''
-    if (label.length > 100) {
-      label = label.substring(0, 100)
-    } else if (label.length < 100) {
-      // Pad with spaces to reach 100 characters
-      label = label.padEnd(100, ' ')
-    }
-    formData.label = label
-
-    formData.administrativeArea = props.place.administrativeArea || response.administrativeArea || ''
-    formData.locality = props.place.locality || response.locality || ''
-    formData.postalCode = props.place.pincode || response.postalCode || ''
+    formData.administrativeArea = props.place.administrativeArea || ''
+    formData.locality = props.place.locality || ''
+    formData.postalCode = props.place.pincode || ''
     formData.googleMapsPlaceId = response.id || ''
     formData.googleMapsUri = response.googleMapsUri || ''
+    formData.address = response.formattedAddress
 
     // Generate description from address components
-    const addressComponents = []
-    if (response.formattedAddress) {
-      formData.description = response.formattedAddress
-    } else {
-      if (formData.locality) addressComponents.push(formData.locality)
-      if (formData.administrativeArea) addressComponents.push(formData.administrativeArea)
-      if (formData.postalCode) addressComponents.push(formData.postalCode)
-      formData.description = addressComponents.join(', ')
-    }
+    const lastLineOfaddressLines = response.postalAddress?.addressLines?.slice(-1)[0] || ''
+    formData.description = `${lastLineOfaddressLines} , ${response.postalAddress?.locality}, ${response.postalAddress?.administrativeArea}`
+
   }
 }
 
@@ -167,7 +157,8 @@ const onSubmit = async () => {
       ...(formData.sect && { sect: formData.sect }),
       ...(formData.administrativeArea && { administrativeArea: formData.administrativeArea.trim() }),
       ...(formData.locality && { locality: formData.locality.trim() }),
-      ...(formData.postalCode && { postalCode: formData.postalCode.trim() })
+      ...(formData.postalCode && { postalCode: formData.postalCode.trim() }),
+      ...(formData.address && { address: formData.address.trim() })
     }
 
     // Call the API
