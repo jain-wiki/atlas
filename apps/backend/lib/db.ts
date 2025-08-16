@@ -21,10 +21,12 @@ console.log('SQLite version:', version?.version);
 
 // Graceful shutdown
 process.on('exit', () => {
+  db.exec('PRAGMA wal_checkpoint(TRUNCATE);');
   db.close();
 });
 
 process.on('SIGINT', () => {
+  db.exec('PRAGMA wal_checkpoint(TRUNCATE);');
   db.close();
   process.exit(0);
 });
