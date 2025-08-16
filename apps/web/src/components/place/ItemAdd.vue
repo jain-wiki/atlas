@@ -40,6 +40,14 @@
                 <div class="tw:text-gray-600 tw:text-xs">If you need to add more then one value for this field, make
                   the changes directly on the <strong>WikiBase</strong>, after the item is created.</div>
               </div>
+
+
+              <div class="tw:space-y-2">
+                <div class="tw:text-sm tw:font-medium tw:mb-0">Tirthankar</div>
+                <QSelect v-model="formData.tirthankar" :options="filteredTirthankarOptions" color="primary" use-input
+                  input-debounce="0" @filter="filterTirthankar" @input-value="setTirthankarInputValue" clearable
+                  outlined dense hint="Type to search" />
+              </div>
             </div>
 
             <!-- Location Fields -->
@@ -89,12 +97,17 @@ const placeResponse = computed(() => JSON.parse(props.place?.response ?? '{}'))
 const show = defineModel<boolean>('show', { default: false })
 const isSubmitting = ref(false) // Form submission loading state
 
+// Reactive data for Tirthankar autocomplete
+const tirthankarInputValue = ref('')
+const filteredTirthankarOptions = ref<Array<{ value: string; label: string }>>([])
+
 // Form data reactive object
 const formData = reactive({
   label: '',
   description: '',
   classification: '' as 'T' | 'C' | '',
   sect: '' as 'Digambar' | 'Shwetambar' | 'Terapanth' | 'Sthanakvasi' | '',
+  tirthankar: '' as 'Q14' | 'Q15' | 'Q16' | 'Q17' | 'Q18' | 'Q19' | 'Q20' | 'Q21' | 'Q22' | 'Q23' | 'Q24' | 'Q25' | 'Q26' | 'Q27' | 'Q28' | 'Q29' | 'Q30' | 'Q31' | 'Q32' | 'Q33' | 'Q34' | 'Q35' | 'Q36' | 'Q37',
   latitude: '',
   longitude: '',
   administrativeArea: '',
@@ -144,6 +157,28 @@ const tirthankarOptions = [
   { value: 'Q36', label: 'Parshvanath' },
   { value: 'Q37', label: 'Mahavir' },]
 
+// Tirthankar autocomplete methods
+const filterTirthankar = (val: string, update: (fn: () => void) => void) => {
+  update(() => {
+    if (val === '') {
+      filteredTirthankarOptions.value = tirthankarOptions
+    }
+    else {
+      const needle = val.toLowerCase()
+      filteredTirthankarOptions.value = tirthankarOptions.filter(
+        option => option.label.toLowerCase().indexOf(needle) > -1
+      )
+    }
+  })
+}
+
+const setTirthankarInputValue = (val: string) => {
+  tirthankarInputValue.value = val
+}
+
+// Initialize filtered options
+filteredTirthankarOptions.value = tirthankarOptions
+
 // Pre-populate form with place data if available
 const populateFormFromPlace = () => {
   if (props.place && placeResponse.value) {
@@ -186,6 +221,7 @@ const onSubmit = async () => {
       googleMapsUri: formData.googleMapsUri.trim(),
       googleMapsPlaceId: formData.googleMapsPlaceId.trim(),
       ...(formData.sect && { sect: formData.sect }),
+      ...(formData.tirthankar && { tirthankar: formData.tirthankar }),
       ...(formData.administrativeArea && { administrativeArea: formData.administrativeArea.trim() }),
       ...(formData.locality && { locality: formData.locality.trim() }),
       ...(formData.postalCode && { postalCode: formData.postalCode.trim() }),
@@ -205,6 +241,7 @@ const onSubmit = async () => {
         description: '',
         classification: '',
         sect: '',
+        tirthankar: '',
         administrativeArea: '',
         locality: '',
         postalCode: '',
