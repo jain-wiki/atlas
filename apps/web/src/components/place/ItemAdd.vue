@@ -52,7 +52,11 @@
 
             <!-- Location Fields -->
             <div class="tw:text-gray-700 tw:underline tw:mb-2">Location Details</div>
-            <div class="tw:mb-2">latitude: {{ formData.latitude }}, longitude: {{ formData.longitude }}</div>
+            <div class="tw:mb-2 tw:text-gray-600 tw:text-xs">
+              <span>latitude: {{ formData.latitude }}, longitude: {{ formData.longitude }}</span><br />
+              <span>Place ID: {{ formData.googleMapsPlaceId }}</span><br />
+              <span>Google Maps URI: {{ formData.googleMapsUri }}</span>
+            </div>
 
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QInput v-model="formData.administrativeArea" label="State in India" outlined dense maxlength="100" />
