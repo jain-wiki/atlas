@@ -185,7 +185,39 @@ const tirthankarOptions = [
   { value: 'Q34', label: 'Naminath' },
   { value: 'Q35', label: 'Neminath' },
   { value: 'Q36', label: 'Parshvanath' },
-  { value: 'Q37', label: 'Mahavir' },]
+  { value: 'Q37', label: 'Mahavir' },
+]
+
+const stateOptions = [
+  { value: 'Q64', label: 'Rajasthan' },
+  { value: 'Q51', label: 'Gujarat' },
+  { value: 'Q7', label: 'Maharashtra' },
+  { value: 'Q57', label: 'Madhya Pradesh' },
+  { value: 'Q48', label: 'Bihar' },
+  { value: 'Q54', label: 'Jharkhand' },
+  { value: 'Q45', label: 'Andhra Pradesh' },
+  { value: 'Q46', label: 'Arunachal Pradesh' },
+  { value: 'Q47', label: 'Assam' },
+  { value: 'Q49', label: 'Chhattisgarh' },
+  { value: 'Q50', label: 'Goa' },
+  { value: 'Q52', label: 'Haryana' },
+  { value: 'Q53', label: 'Himachal Pradesh' },
+  { value: 'Q55', label: 'Karnataka' },
+  { value: 'Q56', label: 'Kerala' },
+  { value: 'Q58', label: 'Manipur' },
+  { value: 'Q59', label: 'Meghalaya' },
+  { value: 'Q60', label: 'Mizoram' },
+  { value: 'Q61', label: 'Nagaland' },
+  { value: 'Q62', label: 'Odisha' },
+  { value: 'Q63', label: 'Punjab' },
+  { value: 'Q65', label: 'Sikkim' },
+  { value: 'Q66', label: 'Tamil Nadu' },
+  { value: 'Q67', label: 'Telangana' },
+  { value: 'Q68', label: 'Tripura' },
+  { value: 'Q69', label: 'Uttar Pradesh' },
+  { value: 'Q70', label: 'Uttarakhand' },
+  { value: 'Q71', label: 'West Bengal' },
+]
 
 // Tirthankar autocomplete methods
 const filterTirthankar = (val: string, update: (fn: () => void) => void) => {
