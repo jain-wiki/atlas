@@ -6,6 +6,7 @@ import { zValidator } from '@hono/zod-validator';
 import { createWikiItem } from '../helper/wikiitem';
 import { getCidFromGoogleMapsUri } from '@atlas/utils/src/maputils';
 import { db } from '../lib/db';
+import { getDataFromWikibase } from '../helper/wikiquery';
 
 export const wikiSave = new Hono()
 
@@ -51,6 +52,18 @@ wikiSave.post('/item',
       classification, sect,
       administrativeArea, locality, postalCode, googleMapsUri, googleMapsPlaceId,
     } = c.req.valid('json');
+
+    // 1st Check if the googleMapsPlaceId is already added in the Wikibase
+    const sparqlgoogleMapsPlaceId = `SELECT ?item WHERE { ?item yp:P25 "${googleMapsPlaceId}".} LIMIT 5`
+    const existingItems = await getDataFromWikibase(sparqlgoogleMapsPlaceId, true)
+    if (existingItems.length) {
+      const { item } = existingItems[0]!;
+      return c.json({
+        success: true, show: true,
+        message: `Item already exists on https://data.jain.wiki with ID ${item}`,
+        itemId: item
+      });
+    }
 
     // Extract CID from Google Maps URI
     const cid = getCidFromGoogleMapsUri(googleMapsUri);
