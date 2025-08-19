@@ -1,5 +1,6 @@
 import { WBK, simplifySparqlResults, } from 'wikibase-sdk'
 import axios from 'axios'
+import type { SimplifiedSparqlResults, SparqlResults } from 'wikibase-sdk'
 
 
 export const WikiQuery = WBK({
@@ -19,13 +20,16 @@ PREFIX yq: <https://data.jain.wiki/entity/>
 PREFIX yp: <https://data.jain.wiki/prop/direct/>
 `
 
-export async function getDataFromWikibase(sparqlQueryString: string, simplify = false) {
+// Function overloads for better type inference
+export async function getDataFromWikibase(sparqlQueryString: string, simplify: true): Promise<SimplifiedSparqlResults>
+export async function getDataFromWikibase(sparqlQueryString: string, simplify?: false): Promise<SparqlResults>
+export async function getDataFromWikibase(sparqlQueryString: string, simplify = false): Promise<SimplifiedSparqlResults | SparqlResults> {
   if (!sparqlQueryString) throw new Error('No SPARQL query provided')
   const sparqlWithPrefix = sparqlPrefix + sparqlQueryString // Add SPARQL prefix
   const url = WikiQuery.sparqlQuery(sparqlWithPrefix) // Construct the SPARQL query URL
   const response = await AxWikiQuery.get(url) // Send the GET request using axios
   if (simplify) { // if simplify is true then simplify the results and return
-    return simplifySparqlResults(response.data)
+    return simplifySparqlResults(response.data) as SimplifiedSparqlResults
   }
-  return response.data
+  return response.data as SparqlResults
 }
