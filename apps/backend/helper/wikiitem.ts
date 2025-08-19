@@ -29,7 +29,7 @@ export async function createWikiItem(title: string, description: string, claims:
   return entity.id
 }
 
-export async function editWikiItem(itemId: string, claims: Record<string, string>) {
+export async function editWikiItem(itemId: string, claims: Record<string, string | any>) {
   const { entity } = await wbEdit.entity.edit({
     id: itemId,
     claims
