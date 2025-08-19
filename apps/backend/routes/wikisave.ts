@@ -45,11 +45,14 @@ wikiSave.post('/item',
       postalCode: z.string().max(20).optional(),
       googleMapsUri: z.url(), // required
       googleMapsPlaceId: z.string().max(100), // required
+      longitude: z.number().min(-180).max(180), // required
+      latitude: z.number().min(-90).max(90), // required
     })),
   async (c) => {
     const {
       label, description,
       classification, sect,
+      longitude, latitude,
       administrativeArea, locality, postalCode, googleMapsUri, googleMapsPlaceId,
     } = c.req.valid('json');
 
@@ -81,6 +84,16 @@ wikiSave.post('/item',
 
     if (googleMapsUri) { claims['P5'] = `https://www.google.com/maps?cid=${cid}` }
     if (postalCode) { claims['P15'] = postalCode }
+
+    // Latitude and Longitude
+    claims['P2'] = {
+      value: {
+        latitude: parseFloat(latitude.toFixed(6)),
+        longitude: parseFloat(longitude.toFixed(6)),
+        precision: 1e-7,
+      }
+    }
+
     claims['P7'] = 'Q1' // TODO: Think of removing this. Currently we are adding only Places in India, hence this is fine.
     if (googleMapsPlaceId) { claims['P25'] = googleMapsPlaceId }
 
