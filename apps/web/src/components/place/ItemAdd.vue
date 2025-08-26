@@ -314,6 +314,8 @@ const onSubmit = async () => {
       classification: formData.classification,
       googleMapsUri: formData.googleMapsUri.trim(),
       googleMapsPlaceId: formData.googleMapsPlaceId.trim(),
+      latitude: formData.latitude,
+      longitude: formData.longitude,
       ...(formData.sect && { sect: formData.sect }),
       ...(formData.tirthankar && { tirthankar: formData.tirthankar }),
       ...(formData.administrativeArea && { administrativeArea: formData.administrativeArea.trim() }),
