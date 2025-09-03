@@ -20,6 +20,7 @@ const mapsFieldMask = [
   'places.location', // Location of the place (latitude and longitude)
   'places.googleMapsUri', // Main URL to the place on Google Maps
   'places.types', // Types of the place (e.g., 'place_of_worship')
+  'places.userRatingCount', // NOTE: ⚠️ This is using the Enterprise SKU. Hence higher cost
 ].join(',');
 
 

@@ -16,7 +16,9 @@
               <span class="tw:text-lg">Add Item to Main Database (ie. WikiBase on https://data.jain.wiki)</span>
             </div>
             <!-- Required Fields -->
-            <div class=" tw:text-gray-700 tw:underline tw:mb-2">Basic Details</div>
+            <div class=" tw:text-gray-700 tw:underline tw:mb-2">Basic Details
+              ⭐{{ placeResponse.userRatingCount || 0 }}
+            </div>
             <div class="tw:grid tw:grid-cols-1 md:tw:grid-cols-2 tw:gap-2">
               <QInput v-model="formData.label" label="Label *" outlined dense required counter maxlength="100"
                 class="tw:col-span-full" hint="Remove the words like 'Jain Temple/Mandir' or 'Digambar/Shwetambar'" />
