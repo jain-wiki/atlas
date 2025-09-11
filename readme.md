@@ -54,5 +54,6 @@ LIMIT 100
 
 - https://data.jain.wiki/wiki/Special:Log/delete
 - https://data.jain.wiki/wiki/Special:EntityData/Q12.json (JSON representation of the entity)
+- https://data.jain.wiki/w/api.php?action=parse&page=Property%20talk:P36&format=json&prop=wikitext (JSON of Discussion page)
 - https://data.jain.wiki/wiki/Special:Log/protect Logs of protection changes
 - https://data.jain.wiki/wiki/Special:ListUsers List of users
