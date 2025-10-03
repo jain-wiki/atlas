@@ -22,7 +22,7 @@
     "nanoid": "catalog:",
     "papaparse": "5.5.3",
     "pinia": "3.0.3",
-    "quasar": "2.18.1",
+    "quasar": "2.18.5",
     "tailwindcss": "4.1.10",
     "vue": "3.5.17",
     "vue-gtag": "3.5.1",
