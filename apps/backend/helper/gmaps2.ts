@@ -61,17 +61,14 @@ function extractGoogleMapsCID(url: string) {
 
 function extractPlaceId(html: string): string {
   // Using regex get the full URL which starts with `https://search.google.com/local/reviews`
+  // Extract the URL that starts with https://search.google.com/local/reviews
+  const urlRegex = /placeid\\\\u003d([^\\&"]+)/;
+  const match = html.match(urlRegex);
 
-  // HTML is like below:
-  // '\n[null,[],null,null,[[3671.527804395336,72.5894749,23.041099700000004],[0,0,0],[1024,768],13.1],null,[\"0qbjaMu3A_KNseMPq_mT-QM\",\"0ahUKEwjL6OqBu4-QAxXyRmwGHav8JD8Q8BcIAigA\",[\"40, Shahibaug Rd.\",\"Bardolpura, Madhupura\",\"Ahmedabad, Gujarat 380016\"],null,[null,null,null,[\"https://search.google.com/local/reviews?placeid\\u003dChIJq744I0CEXjkRmRSLZ_9dtm8\\u0026q\\u003dHutheesing+Jain+Temple\\u0026authuser\\u003d0\\u0026hl\\u003den\\u0026gl\\u003dIN\",\"9,833 reviews\",null,\"0ahUKEwjL6OqBu4-QAxXyRmwGHav8JD8Q6W4IEygA\"],null,null,null,4.6,9833],null,null,null,null,[null,null,23.0410997,72.5894749],\"0x395e84402338beab:0x6fb65dff678b1499\",\"Hutheesing Jain Temple\",null,[\"Jain temple\",\"Place of worship\",\"Tourist attraction\"],\"Bardolpura, Madhupura\",null,null,null,\"Hutheesing Jain Temple, 40, Shahibaug Rd., Bardolpura, Madhupura, Ahmedabad, Gujarat 380016\",null,null,null,null,null,[[[[[2,null,null,null,
-
-  const reviewUrlMatch = html.match(/https:\/\/search\.google\.com\/local\/reviews\?placeid=([^"&]+)/);
-  if (reviewUrlMatch && reviewUrlMatch[1]) {
-    const reviewUrl = reviewUrlMatch[1];
-    return reviewUrl;
-  } else {
-    return '';
+  if (match && match[1]) {
+    return match[1];
   }
+  return '';
 
 }
 
@@ -85,9 +82,10 @@ function extractAddress(html: string): string {
     // Remove any leading text before the first dot and space
     const address = htmlName.split('·').slice(1).join('·').trim();
     return address;
-  } else {
-    return 'Address not found';
   }
+
+  return '';
+
 }
 
 if (import.meta.main) {
@@ -96,6 +94,8 @@ if (import.meta.main) {
   // const cid = extractGoogleMapsCID(redirectedUrl);
   // console.log({ name, lat, lng, cid, redirectedUrl });
   const html = await Bun.file('html.txt').text();
+  console.log(html.substring(85853, 85853 + 250)); // print for debugging
+
   const placeId = extractPlaceId(html);
   const address = extractAddress(html);
   console.log({ placeId, address });
