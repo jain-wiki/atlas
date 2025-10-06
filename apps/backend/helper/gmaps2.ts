@@ -60,8 +60,7 @@ function extractGoogleMapsCID(url: string) {
 
 
 function extractPlaceId(html: string): string {
-  // Using regex get the full URL which starts with `https://search.google.com/local/reviews`
-  // Extract the URL that starts with https://search.google.com/local/reviews
+  // Using regex get the placeid from the HTML content
   const urlRegex = /placeid\\\\u003d([^\\&"]+)/;
   const match = html.match(urlRegex);
 
@@ -76,7 +75,8 @@ function extractAddress(html: string): string {
   // Address is in the HTML meta tag with itemprop="name"
   //  <meta content="Hutheesing Jain Temple · Hutheesing Jain Temple, 40, Shahibaug Rd., Bardolpura, Madhupura, Ahmedabad, Gujarat 380016" itemprop="name">
 
-  const addressMatch = html.match(/<meta content="(.*?)" itemprop="name">/);
+  // Use multiline and dotall flags to match across newlines
+  const addressMatch = html.match(/<meta\s+content="(.*?)"\s+itemprop="name">/s);
   if (addressMatch && addressMatch[1]) {
     const htmlName = addressMatch[1];
     // Remove any leading text before the first dot and space
@@ -89,15 +89,15 @@ function extractAddress(html: string): string {
 }
 
 if (import.meta.main) {
-  // const sharedLink = 'https://maps.app.goo.gl/sq1hLcKbaziicbMk8';
-  // const { name, lat, lng, redirectedUrl } = await getPlaceIdFromSharedLink(sharedLink);
-  // const cid = extractGoogleMapsCID(redirectedUrl);
-  // console.log({ name, lat, lng, cid, redirectedUrl });
-  const html = await Bun.file('html.txt').text();
-  console.log(html.substring(85853, 85853 + 250)); // print for debugging
+  const sharedLink = 'https://maps.app.goo.gl/sq1hLcKbaziicbMk8';
+  const { name, lat, lng, redirectedUrl } = await getPlaceIdFromSharedLink(sharedLink);
+  const cid = extractGoogleMapsCID(redirectedUrl);
+  console.log({ name, lat, lng, cid, redirectedUrl });
+  // const html = await Bun.file('html.txt').text();
+  // console.log(html.substring(1100, 1100 + 250)); // print for debugging
 
-  const placeId = extractPlaceId(html);
-  const address = extractAddress(html);
-  console.log({ placeId, address });
+  // const placeId = extractPlaceId(html);
+  // const address = extractAddress(html);
+  // console.log({ placeId, address });
 
 }
