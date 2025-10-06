@@ -71,3 +71,9 @@ export function getUniqueDigiPinPrefixes(minLat: number, maxLat: number, minLon:
   }
   return Array.from(prefixSet) // Convert Set to Array and return
 }
+
+
+if (import.meta.main) {
+  const { maxLat, maxLng, minLat, minLng } = getBoundingBoxFromDigiPINPrefix('4FM97');
+  console.log({ maxLat, maxLng, minLat, minLng });
+}
