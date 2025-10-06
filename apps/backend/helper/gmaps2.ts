@@ -61,7 +61,8 @@ function extractGoogleMapsCID(url: string) {
 
 function extractPlaceId(html: string): string {
   // Using regex get the placeid from the HTML content
-  const urlRegex = /placeid\\\\u003d([^\\&"]+)/;
+  // The place id starts with `ChIJ` and is 27 characters long.
+  const urlRegex = /(ChIJ[0-9A-Za-z_-]{23})/;
   const match = html.match(urlRegex);
 
   if (match && match[1]) {
