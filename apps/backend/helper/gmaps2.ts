@@ -33,11 +33,22 @@ export async function getPlaceIdFromSharedLink(sharedLink: string) {
   }
 
   // 3. Get the Response form the redirected URL to get placeID and also Address.
-  const placeDetailsResponse = await axios.get(redirectedUrl);
+  const placeDetailsResponse = await axios.get(redirectedUrl, {
+    timeout: 10000, // 10 seconds
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+      'Accept': `text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7`,
+      'accept-encoding': 'gzip, deflate, br',
+      'accept-language': 'en-US,en;q=0.9',
+      'dnt': '1',
+    },
+    maxRedirects: 0, // Do not follow redirects
+  });
+  await Bun.file('test3.txt').write(placeDetailsResponse.data) // For debugging
   const placeId = extractPlaceId(placeDetailsResponse.data);
   const address = extractAddress(placeDetailsResponse.data);
 
-  return { name, lat, lng, redirectedUrl, cid };
+  return { name, lat, lng, redirectedUrl, cid, placeId, address };
 }
 
 
@@ -91,12 +102,11 @@ function extractAddress(html: string): string {
 
 if (import.meta.main) {
   const sharedLink = 'https://maps.app.goo.gl/sq1hLcKbaziicbMk8';
-  const { name, lat, lng, redirectedUrl } = await getPlaceIdFromSharedLink(sharedLink);
-  const cid = extractGoogleMapsCID(redirectedUrl);
-  console.log({ name, lat, lng, cid, redirectedUrl });
-  // const html = await Bun.file('html.txt').text();
-  // console.log(html.substring(1100, 1100 + 250)); // print for debugging
+  const all = await getPlaceIdFromSharedLink(sharedLink);
+  console.dir(all, { depth: 10 });
 
+  // const html = await Bun.file('test4.txt').text();
+  // console.log(html.substring(1100, 1100 + 250)); // print for debugging
   // const placeId = extractPlaceId(html);
   // const address = extractAddress(html);
   // console.log({ placeId, address });
