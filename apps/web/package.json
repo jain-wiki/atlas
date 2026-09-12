@@ -27,7 +27,7 @@
     "vue": "3.5.17",
     "vue-gtag": "3.5.1",
     "vue-router": "4.5.1",
-    "zod": "3.25.67"
+    "zod": "3.25.76"
   },
   "devDependencies": {
     "@quasar/vite-plugin": "1.9.0",
